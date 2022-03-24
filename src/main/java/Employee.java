@@ -6,12 +6,11 @@ public class Employee {
     int timeWorked;
     int[][] annaulTime;
 
+    /*
     public int getDailyWorkedHours() {
-
     }
 
     public boolean EmployeeAvailable() {
-
-    }
+    }*/
 
 }
