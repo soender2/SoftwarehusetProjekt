@@ -14,9 +14,11 @@ import system.app.*;
         Employee employee;
         Project project;
         PMA pma;
+        ErrorMessageHolder errorMessageHolder;
 
-        public deleteProject(PMA pma) {
+        public deleteProject(PMA pma, ErrorMessageHolder errorMessageHolder) {
             this.pma = pma;
+            this.errorMessageHolder = errorMessageHolder;
         }
 
         @Given("there is a project with project name {string}")
@@ -30,7 +32,11 @@ import system.app.*;
         public void the_user_with_initials_is_the_manager_of_the_project(String string) {
             employee = new Employee(string);
             project.setProjectManager(employee);
-            assertTrue(project.isProjectManager(employee));
+            try {
+                assertTrue(project.isProjectManager(employee));
+            } catch (OperationNotAllowed e) {
+                errorMessageHolder.setErrorMessage(e.getMessage());
+            }
         }
 
         @When("the user removes the project")
@@ -41,6 +47,22 @@ import system.app.*;
         @Then("the project is removed")
         public void the_project_is_removed() {
             assertFalse(pma.existProject(project));
+        }
+
+        @Given("the user with initials {string} is not the manager of the project")
+        public void the_user_with_initials_is_not_the_manager_of_the_project(String string) {
+            employee = new Employee(string);
+
+            try {
+                assertTrue(project.isProjectManager(employee));
+            } catch (OperationNotAllowed e) {
+                errorMessageHolder.setErrorMessage(e.getMessage());
+            }
+
+        }
+        @Then("the error message {string} is given")
+        public void the_error_message_is_given(String errormessage) {
+            assertEquals(errormessage, this.errorMessageHolder.getErrorMessage());
         }
     }
 
