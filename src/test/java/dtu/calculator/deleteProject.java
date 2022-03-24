@@ -1,20 +1,34 @@
 package dtu.calculator;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import system.app.*;
 
     public class deleteProject {
-        @Given("there is a project with project name {string} and project number {string}")
-        public void there_is_a_project_with_project_name_and_project_number(String string, String string2) {
+        Employee employee;
+        Project project;
+        PMA pma;
+
+        public deleteProject(PMA pma) {
+            this.pma = pma;
+        }
+
+        @Given("there is a project with project name {string}")
+        public void there_is_a_project_with_project_name(String string) {
             // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            project = new Project(string);
         }
 
         @Given("the user with initials {string} is the manager of the project")
         public void the_user_with_initials_is_the_manager_of_the_project(String string) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+            employee = new Employee(string);
+            assertTrue(project.isProjectManager(employee));
         }
 
         @When("the user request to remove the project")
@@ -22,31 +36,11 @@ import io.cucumber.java.en.When;
             // Write code here that turns the phrase above into concrete actions
             throw new io.cucumber.java.PendingException();
         }
-
         @Then("the project should be removed")
         public void the_project_should_be_removed() {
             // Write code here that turns the phrase above into concrete actions
             throw new io.cucumber.java.PendingException();
         }
-
-        @Given("the user with initials {string} is not the manager of the project")
-        public void the_user_with_initials_is_not_the_manager_of_the_project(String string) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
-        }
-
-        @When("the user request to remove a project")
-        public void the_user_request_to_remove_a_project() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
-        }
-
-        @Then("the error message {string} is given")
-        public void the_error_message_is_given(String string) {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
-        }
-
     }
 
 

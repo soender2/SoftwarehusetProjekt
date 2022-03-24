@@ -10,6 +10,6 @@ It can be run through Maven, e.g., `mvn clean test`, Eclipse (run as JUnit test)
 
 In case of Eclipse, if the run configuratiom for the test is set to JUnit 4, all the Cucumber tests and all the JUnit 4 tests are run, but not the JUnit 5 tests. If the setting is set to JUnit 5, then all the tests are run.
 
-For using Cucumber in Eclipse, you want to install the Cucumber plugin. In Eclipse, installing the Cucumber plugin is offered to you once you try to open a file with extension .feature. After the plugin is installled and Eclipse is restarted, you can select the project and then choose in the right button menu "Configure::Convert to Cucumber Project ...". This allows you later in a feature file to jump directly to the corresponding step definitions.
+For using Cucumber in Eclipse, you want to install the Cucumber plugin. In Eclipse, installing the Cucumber plugin is offered to you once you try to open a file with extension .feature. After the plugin is installled and Eclipse is restarted, you can select the project and then choose in the right button menu "Configure::Convert to Cucumber system.app.Project ...". This allows you later in a feature file to jump directly to the corresponding step definitions.
 
 When you use this project as a starting point, please remember to remove those feature files and classes that were just included for demonstration purposes.
