@@ -11,6 +11,10 @@ public class Project {
         this.name = name;
     }
 
+    public void setProjectManager(Employee employee) {
+        this.projectManager = employee;
+    }
+
     public boolean isProjectManager(Employee employee) {
         return this.projectManager.employeeId.equals(employee.employeeId);
     }

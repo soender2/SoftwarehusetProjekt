@@ -5,8 +5,8 @@ Feature: Delete project
   Scenario: A user deletes project successfully
     Given there is a project with project name "Project 1"
     And the user with initials "name" is the manager of the project
-    When the user request to remove the project
-    Then the project should be removed
+    When the user removes the project
+    Then the project is removed
 
 #
 #  Scenario: A user deletes project when the user is not the project manager

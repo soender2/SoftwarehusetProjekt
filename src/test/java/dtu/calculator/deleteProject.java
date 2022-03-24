@@ -21,25 +21,26 @@ import system.app.*;
 
         @Given("there is a project with project name {string}")
         public void there_is_a_project_with_project_name(String string) {
-            // Write code here that turns the phrase above into concrete actions
             project = new Project(string);
+            pma.addProject(project);
+            assertTrue(pma.existProject(project));
         }
 
         @Given("the user with initials {string} is the manager of the project")
         public void the_user_with_initials_is_the_manager_of_the_project(String string) {
             employee = new Employee(string);
+            project.setProjectManager(employee);
             assertTrue(project.isProjectManager(employee));
         }
 
-        @When("the user request to remove the project")
-        public void the_user_request_to_remove_the_project() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+        @When("the user removes the project")
+        public void the_user_removes_the_project() {
+            pma.deleteProject(project);
         }
-        @Then("the project should be removed")
-        public void the_project_should_be_removed() {
-            // Write code here that turns the phrase above into concrete actions
-            throw new io.cucumber.java.PendingException();
+
+        @Then("the project is removed")
+        public void the_project_is_removed() {
+            assertFalse(pma.existProject(project));
         }
     }
 
