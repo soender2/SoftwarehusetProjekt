@@ -14,7 +14,7 @@ public class AddActivity {
     PMA pma;
     ErrorMessageHolder errorMessageHolder;
 
-    public AddActivity(Employee employee, Project project, PMA pma, ErrorMessageHolder errorMessageHolder){
+    public AddActivity(Project project, PMA pma){
         this.project = project;
         this.pma = pma;
 
