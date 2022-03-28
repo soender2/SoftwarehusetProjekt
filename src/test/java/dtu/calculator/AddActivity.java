@@ -23,7 +23,6 @@ public class AddActivity {
     @Given("the activity with the name {string} is not in the project")
     public void the_activity_with_the_name_is_not_in_the_project(String string) {
         // Write code here that turns the phrase above into concrete actions
-        project.isProjectManager();
         throw new io.cucumber.java.PendingException();
     }
 
@@ -38,8 +37,5 @@ public class AddActivity {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
 
 }
