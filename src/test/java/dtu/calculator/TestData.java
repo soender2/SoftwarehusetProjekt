@@ -11,13 +11,6 @@ public class TestData {
     public Activity activity;
     public Employee employee;
 
-public TestData(PMA pma, Project project, Activity activity, Employee employee){
-    this.pma = pma;
-    this.project = project;
-    this.activity = activity;
-    this.employee = employee;
-
-}
 
 
 }

@@ -8,6 +8,10 @@ public class Activity {
     int startTime;
     int endTime;
 
+    public Activity(String name) {
+        this.name = name;
+    }
+
     public void assignEmployeeActivities(Employee employee) {
 
     }

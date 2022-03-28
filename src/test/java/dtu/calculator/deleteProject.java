@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import io.cucumber.java.an.E;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,28 +13,28 @@ import system.app.*;
 
     public class deleteProject {
         Employee employee;
-        Project project;
-        PMA pma;
         ErrorMessageHolder errorMessageHolder;
+        TestData testData;
 
-        public deleteProject(PMA pma, ErrorMessageHolder errorMessageHolder) {
-            this.pma = pma;
-            this.errorMessageHolder = errorMessageHolder;
+        public deleteProject(TestData testData) {
+            this.testData = testData;
+            this.testData.pma = new PMA();
+            this.errorMessageHolder = new ErrorMessageHolder();
         }
 
         @Given("there is a project with project name {string}")
         public void there_is_a_project_with_project_name(String string) {
-            project = new Project(string);
-            pma.addProject(project);
-            assertTrue(pma.existProject(project));
+            testData.project = new Project(string);
+            testData.pma.addProject(testData.project);
+            assertTrue(testData.pma.existProject(testData.project));
         }
 
         @Given("the user with initials {string} is the manager of the project")
         public void the_user_with_initials_is_the_manager_of_the_project(String string) {
             employee = new Employee(string);
-            project.setProjectManager(employee);
+            testData.project.setProjectManager(employee);
             try {
-                assertTrue(project.isProjectManager(employee));
+                assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
                 errorMessageHolder.setErrorMessage(e.getMessage());
             }
@@ -41,12 +42,12 @@ import system.app.*;
 
         @When("the user removes the project")
         public void the_user_removes_the_project() {
-            pma.deleteProject(project);
+            testData.pma.deleteProject(testData.project);
         }
 
         @Then("the project is removed")
         public void the_project_is_removed() {
-            assertFalse(pma.existProject(project));
+            assertFalse(testData.pma.existProject(testData.project));
         }
 
         @Given("the user with initials {string} is not the manager of the project")
@@ -54,7 +55,7 @@ import system.app.*;
             employee = new Employee(string);
 
             try {
-                assertTrue(project.isProjectManager(employee));
+                assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
                 errorMessageHolder.setErrorMessage(e.getMessage());
             }
@@ -67,7 +68,7 @@ import system.app.*;
 
         @Given("there isn't a project with project name {string}")
         public void there_isn_t_a_project_with_project_name(String string) {
-            assertFalse(pma.existProject(project));
+            assertFalse(testData.pma.existProject(testData.project));
             errorMessageHolder.setErrorMessage("project doesn't exist");
         }
 

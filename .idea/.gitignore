@@ -1,3 +1,25 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+/target/
+
+# git
+.git/
