@@ -10,7 +10,6 @@ Feature: Delete project
 
   Scenario: A user deletes project when project doesn't exist
     Given there isn't a project with project name "Project 1"
-    And the user with initials "name" is a project manager
     When the user removes the project
     Then the error message "project doesn't exist" is given
 

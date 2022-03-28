@@ -64,6 +64,12 @@ import system.app.*;
         public void the_error_message_is_given(String errormessage) {
             assertEquals(errormessage, this.errorMessageHolder.getErrorMessage());
         }
+
+        @Given("there isn't a project with project name {string}")
+        public void there_isn_t_a_project_with_project_name(String string) {
+            assertFalse(pma.existProject(project));
+            errorMessageHolder.setErrorMessage("project doesn't exist");
+        }
     }
 
 
