@@ -10,7 +10,7 @@ public class TestData {
     public PMA pma;
     public Activity activity;
     public Employee employee;
-
+    public ErrorMessageHolder errorMessageHolder;
 
 
 }

@@ -13,13 +13,12 @@ import system.app.*;
 
     public class deleteProject {
         Employee employee;
-        ErrorMessageHolder errorMessageHolder;
         TestData testData;
 
         public deleteProject(TestData testData) {
             this.testData = testData;
             this.testData.pma = new PMA();
-            this.errorMessageHolder = new ErrorMessageHolder();
+            this.testData.errorMessageHolder = new ErrorMessageHolder();
         }
 
         @Given("there is a project with project name {string}")
@@ -36,7 +35,7 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                errorMessageHolder.setErrorMessage(e.getMessage());
+                testData.errorMessageHolder.setErrorMessage("Projectmanager is not registered");
             }
         }
 
@@ -57,19 +56,19 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                errorMessageHolder.setErrorMessage(e.getMessage());
+                testData.errorMessageHolder.setErrorMessage("Projectmanager is not registered");
             }
 
         }
         @Then("the error message {string} is given")
         public void the_error_message_is_given(String errormessage) {
-            assertEquals(errormessage, this.errorMessageHolder.getErrorMessage());
+            assertEquals(errormessage, this.testData.errorMessageHolder.getErrorMessage());
         }
 
         @Given("there isn't a project with project name {string}")
         public void there_isn_t_a_project_with_project_name(String string) {
             assertFalse(testData.pma.existProject(testData.project));
-            errorMessageHolder.setErrorMessage("project doesn't exist");
+            testData.errorMessageHolder.setErrorMessage("project doesn't exist");
         }
 
 

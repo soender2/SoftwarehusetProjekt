@@ -17,4 +17,4 @@ Feature: Delete project
     Given there is a project with project name "Project 1"
     And the user with initials "name" is not the manager of the project
     When the user removes the project
-    Then the error message "project manager is not registered" is given
+    Then the error message "Projectmanager is not registered" is given

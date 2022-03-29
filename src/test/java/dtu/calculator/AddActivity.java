@@ -1,5 +1,6 @@
 package dtu.calculator;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,11 +16,8 @@ import system.app.PMA;
 import system.app.Project;
 
 public class AddActivity {
-    Employee employee;
-    Project project;
-    PMA pma;
+
     Activity activity;
-    ErrorMessageHolder errorMessageHolder;
     TestData testData;
 
     public AddActivity(TestData testData){
@@ -40,6 +38,13 @@ public class AddActivity {
     @Then("the activity with title {string} is added to the project")
     public void the_activity_with_title_is_added_to_the_project(String string) {
         assertTrue(testData.project.nameExistActivity(string));
+    }
+
+    @Given("the activity with the name {string} is already added to the project")
+    public void the_activity_with_the_name_is_already_added_to_the_project(String string) {
+        Activity activity = new Activity(string);
+        testData.project.addActivity(activity);
+        testData.errorMessageHolder.setErrorMessage("Activity already exists");
     }
 
 }
