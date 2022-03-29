@@ -48,4 +48,8 @@ public class Project {
         return false;
     }
 
+    public void removeActivity(Activity activity) {
+        activities.remove(activity);
+    }
+
 }
