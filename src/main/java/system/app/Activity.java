@@ -13,6 +13,26 @@ public class Activity {
     }
 
     public void assignEmployeeActivities(Employee employee) {
-
     }
+
+
+
+    public void reportTimeWorked(int timeHolder){
+        this.timeHolder += timeHolder;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+
+
+
+
+
+
 }
