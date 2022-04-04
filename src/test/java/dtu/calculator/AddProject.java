@@ -20,39 +20,33 @@ public class AddProject {
     Employee employee;
     TestData testData;
     Activity activity;
+    ErrorMessageHolder errorMessageHolder;
 
-
-    public AddProject(TestData testData) {
+    public AddProject(TestData testData, ErrorMessageHolder errorMessageHolder) {
         this.testData = testData;
         this.testData.pma = new PMA();
-        this.testData.errorMessageHolder = new ErrorMessageHolder();
+        this.testData.errorMessageHolder = errorMessageHolder;
     }
 
-    @Given("a project with title {string}")
-    public void a_project_with_title(String string) {
-        assertTrue(string.length() > 0);
-    }
-
-    @Given("the project does not exist with title {string}")
-    public void the_project_does_not_exist_with_title(String string) {
+    @Given("the project with name {string} does not exist")
+    public void the_project_with_name_does_not_exist(String string) {
         assertFalse(testData.pma.existProjectName(string));
     }
 
-    @When("the project is added with title {string}")
-    public void the_project_is_added_with_title(String string) {
+    @When("the project with name {string} is added")
+    public void the_project_with_name_is_added(String string) {
         testData.pma.addProject(new Project(string));
+    }
+
+    @Then("the project is contained in PMA with name {string}")
+    public void the_project_is_contained_in_pma_with_name(String string) {
         assertTrue(testData.pma.existProjectName(string));
     }
 
-    @Then("the project is contained in PMA with title {string}")
-    public void the_project_is_contained_in_pma_with_title(String string) {
-        assertTrue(testData.pma.existProjectName(string));
-    }
-
-    @Then("the error message {string} is given for all")
-    public void the_error_message_is_given_for_all(String string) {
+    @Given("the project with name {string} exist")
+    public void the_project_with_name_exist(String string) {
+        assertFalse(testData.pma.existProjectName(string));
         testData.errorMessageHolder.setErrorMessage("project already exists");
-        assertEquals(testData.errorMessageHolder.getErrorMessage(), "project already exists");
     }
 
 }

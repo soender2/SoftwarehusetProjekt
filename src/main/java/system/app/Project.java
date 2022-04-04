@@ -25,6 +25,11 @@ public class Project {
         this.projectManager = employee;
     }
 
+    public boolean hasProjectManager(){
+        if(this.projectManager == null) return false;
+        else return true;
+    }
+
     public boolean isProjectManager(Employee employee) throws OperationNotAllowed {
         if(this.projectManager == null || employee != this.projectManager) {
             throw new OperationNotAllowed("Projectmanager is not registered");

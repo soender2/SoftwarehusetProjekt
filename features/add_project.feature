@@ -3,14 +3,13 @@ Feature: Add Project
 	Actors: user
 
 Scenario: Add a project successfully
-	Given a project with title "Software project"
- 	And the project does not exist with title "Software project"
- 	When the project is added with title "Software project"
- 	Then the project is contained in PMA with title "Software project"
+	Given the project with name "Software project" does not exist
+	When the project with name "Software project" is added
+ 	Then the project is contained in PMA with name "Software project"
  	
 Scenario: Add an existing project
-	Given a project with title "Software project"
-	When the project is added with title "Software project"
-	Then the error message "project already exists" is given for all
+	Given the project with name "Software project" exist
+	When the project with name "Software project" is added
+	Then the error message "project already exists" is given
 	
 
