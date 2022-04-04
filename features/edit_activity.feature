@@ -3,13 +3,13 @@ Feature: Edit activity
 	Description: An activity in the project is edited
 	Actors: Project manager, Employee
 
-#Scenario: Edit the name of an activity successfully
-#	Given there is a project with project name "Project 1"
-#	And the user with initials "name" is the manager of the project
-#	And the project have an activity named "testing"
-#	And there is a name "testing 2"
-#	When the name is edited
-#	Then the name of the activity is "testing 2"
+Scenario: Edit the name of an activity successfully
+	Given there is a project with project name "Project 1"
+	And the user with initials "name" is the manager of the project
+	And the project have an activity named "testing"
+	And there is a name "testing 2"
+	When the name is edited
+	Then the name of the activity is "testing 2"
 
 #Scenario: Edit the employee working on the activity successfully
 #	Given that the user is project manager with the initials "MOHE"

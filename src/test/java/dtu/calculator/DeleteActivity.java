@@ -29,6 +29,8 @@ public class DeleteActivity {
 
     @Given("the project have an activity named {string}")
     public void the_project_have_an_activity_named(String string) {
+        testData.activity = new Activity(string);
+
         this.activity = new Activity(string);
         testData.project.addActivity(this.activity);
         assertTrue(testData.project.hasActivity(activity));
