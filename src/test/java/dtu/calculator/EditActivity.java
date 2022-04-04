@@ -25,7 +25,7 @@ public class EditActivity {
     @When("the name is edited")
     public void the_name_is_edited() {
        testData.activity.setName(name);
-       System.out.println(testData.project.hasActivity(testData.activity));
+
 
     }
 

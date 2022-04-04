@@ -14,11 +14,12 @@ import system.app.*;
     public class deleteProject {
         Employee employee;
         TestData testData;
+        ErrorMessageHolder errorMessageHolder;
 
-        public deleteProject(TestData testData) {
+        public deleteProject(TestData testData, ErrorMessageHolder errorMessageHolder) {
             this.testData = testData;
             this.testData.pma = new PMA();
-            this.testData.errorMessageHolder = new ErrorMessageHolder();
+            this.errorMessageHolder = errorMessageHolder;
         }
 
         @Given("there is a project with project name {string}")
@@ -52,28 +53,24 @@ import system.app.*;
         @Given("the user with initials {string} is not the manager of the project")
         public void the_user_with_initials_is_not_the_manager_of_the_project(String string) {
             employee = new Employee(string);
-
-
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                testData.errorMessageHolder.setErrorMessage(e.getMessage());
+                errorMessageHolder.setErrorMessage(e.getMessage());
 
             }
 
         }
         @Then("the error message {string} is given")
         public void the_error_message_is_given(String errormessage) {
-            System.out.println(errormessage.equals(testData.errorMessageHolder.getErrorMessage()));
-
-            assertEquals(errormessage, testData.errorMessageHolder.getErrorMessage());
+            assertEquals(errormessage, errorMessageHolder.getErrorMessage());
         }
 
         @Given("there isn't a project with project name {string}")
         public void there_isn_t_a_project_with_project_name(String string) {
 
             assertFalse(testData.pma.existProjectName(string));
-            testData.errorMessageHolder.setErrorMessage("project doesn't exist");
+            errorMessageHolder.setErrorMessage("project doesn't exist");
 
         }
 

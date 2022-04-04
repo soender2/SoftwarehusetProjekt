@@ -23,8 +23,10 @@ public class AddActivity {
 
     Activity activity;
     TestData testData;
+    ErrorMessageHolder errorMessageHolder;
 
-    public AddActivity(TestData testData){
+    public AddActivity(TestData testData, ErrorMessageHolder errorMessageHolder){
+        this.errorMessageHolder = errorMessageHolder;
         this.testData = testData;
     }
 
@@ -48,7 +50,7 @@ public class AddActivity {
     public void the_activity_with_the_name_is_already_added_to_the_project(String string) {
         Activity activity = new Activity(string);
         testData.project.addActivity(activity);
-        testData.errorMessageHolder.setErrorMessage("Activity already exists");
+        errorMessageHolder.setErrorMessage("Activity already exists");
     }
 
 }

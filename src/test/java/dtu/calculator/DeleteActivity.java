@@ -20,11 +20,13 @@ public class DeleteActivity {
     Employee employee;
     TestData testData;
     Activity activity;
+    ErrorMessageHolder errorMessageHolder;
 
-    public DeleteActivity(TestData testData) {
+    public DeleteActivity(TestData testData,ErrorMessageHolder errorMessageHolder ) {
         this.testData = testData;
         this.testData.pma = new PMA();
-        this.testData.errorMessageHolder = new ErrorMessageHolder();
+
+        this.errorMessageHolder = errorMessageHolder;
     }
 
     @Given("the project have an activity named {string}")
@@ -51,7 +53,7 @@ public class DeleteActivity {
         try {
             assertFalse(testData.project.projectContainsActivity());
         } catch (OperationNotAllowed e) {
-            testData.errorMessageHolder.setErrorMessage(e.getMessage());
+            errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
 }
