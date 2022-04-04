@@ -13,9 +13,12 @@ public class Activity {
     }
 
     public void assignEmployeeActivities(Employee employee) {
+        this.employee = employee;
     }
 
-
+    public boolean isActivityStaffed() {
+        return this.employee != null;
+    }
 
     public void reportTimeWorked(int timeHolder){
         this.timeHolder += timeHolder;
@@ -23,6 +26,10 @@ public class Activity {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public String getEmployeeId() {
+        return employee.employeeId;
     }
 
     public String getName(){

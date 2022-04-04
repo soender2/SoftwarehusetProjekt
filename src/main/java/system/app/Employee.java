@@ -3,7 +3,7 @@ package system.app;
 import java.util.ArrayList;
 
 public class Employee {
-    String employeeId;
+    public String employeeId;
     ArrayList<Activity> activities;
     int timeWorked;
     int[][] annaulTime;
@@ -14,9 +14,14 @@ public class Employee {
 
     /*
     public int getDailyWorkedHours() {
+    }*/
+
+    public String getEmployeeId() {
+        return employeeId;
     }
 
     public boolean EmployeeAvailable() {
-    }*/
+        return this.activities.size() < 10;
+    }
 
 }

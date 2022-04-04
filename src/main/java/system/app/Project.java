@@ -1,5 +1,7 @@
 package system.app;
 
+import io.cucumber.java.en_old.Ac;
+
 import java.util.ArrayList;
 
 public class Project {
@@ -24,10 +26,10 @@ public class Project {
     }
 
     public boolean isProjectManager(Employee employee) throws OperationNotAllowed {
-        if(this.projectManager == null) {
-            throw new OperationNotAllowed("project manager is not registered");
+        if(this.projectManager == null || employee != this.projectManager) {
+            throw new OperationNotAllowed("Projectmanager is not registered");
         } else {
-            return this.projectManager.employeeId.equals(employee.employeeId);
+            return true;
         }
     }
 
@@ -50,6 +52,24 @@ public class Project {
 
     public void removeActivity(Activity activity) {
         activities.remove(activity);
+    }
+
+    public Activity getActivity(String name) {
+        for(Activity activity: activities) {
+            if(activity.name.equals(name)) {
+                return activity;
+            }
+        }
+        return null;
+    }
+
+    public boolean projectContainsActivity() throws OperationNotAllowed {
+        if(this.activities.isEmpty()) {
+            throw new OperationNotAllowed("No activities available for deleting");
+        } else {
+            return false;
+        }
+
     }
 
 }

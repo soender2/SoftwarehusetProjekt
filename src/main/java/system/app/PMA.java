@@ -23,4 +23,17 @@ public class PMA {
         return projects.contains(project);
     }
 
+    public boolean existProjectName(String projectname) {
+        for(Project project: projects) {
+            if(project.name.equals(projectname)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Employee> availableEmployees() {
+        return employees;
+    }
+
 }

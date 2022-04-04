@@ -35,7 +35,7 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                testData.errorMessageHolder.setErrorMessage("Projectmanager is not registered");
+                testData.errorMessageHolder.setErrorMessage(e.getMessage());
             }
         }
 
@@ -56,19 +56,21 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                testData.errorMessageHolder.setErrorMessage("Projectmanager is not registered");
+                testData.errorMessageHolder.setErrorMessage(e.getMessage());
             }
 
         }
         @Then("the error message {string} is given")
         public void the_error_message_is_given(String errormessage) {
-            assertEquals(errormessage, this.testData.errorMessageHolder.getErrorMessage());
+            assertEquals(errormessage, testData.errorMessageHolder.getErrorMessage());
         }
 
         @Given("there isn't a project with project name {string}")
         public void there_isn_t_a_project_with_project_name(String string) {
-            assertFalse(testData.pma.existProject(testData.project));
+
+            assertFalse(testData.pma.existProjectName(string));
             testData.errorMessageHolder.setErrorMessage("project doesn't exist");
+
         }
 
 

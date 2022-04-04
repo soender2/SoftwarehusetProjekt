@@ -43,4 +43,13 @@ public class DeleteActivity {
     public void the_activity_named_is_deleted_from_the_project(String string) {
         assertFalse(testData.project.nameExistActivity(string));
     }
+
+    @Given("the project contains zero activities")
+    public void the_project_contains_zero_activities() {
+        try {
+            assertFalse(testData.project.projectContainsActivity());
+        } catch (OperationNotAllowed e) {
+            testData.errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+    }
 }

@@ -12,7 +12,7 @@
 #  Scenario: request to see available employees when the user is not the project manager
 #    Given the user with initials "name" is not the manager of the project
 #    When the user request to see available employees
-#    Then the error message "project manager is not registered" is given
+#    Then the error message "Projectmanager is not registered" is given
 #
 #
 #  Scenario: A user request to see available employees when there are no employees available
