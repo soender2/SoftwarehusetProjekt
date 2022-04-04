@@ -11,6 +11,10 @@ public class PMA {
         employees = new ArrayList<Employee>();
     }
 
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
     public void addProject(Project project) {
         projects.add(project);
     }
@@ -34,6 +38,25 @@ public class PMA {
 
     public ArrayList<Employee> availableEmployees() {
         return employees;
+    }
+
+    public Employee getEmployee(String employee_id) {
+        for(Employee employee: employees) {
+            if(employee.employeeId.equals(employee_id)) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    public boolean isEmployeeAvailable(String name){
+
+        for(Employee employee: employees) {
+            if(employee.employeeId.equals(name)) {
+                return employee.EmployeeAvailable();
+            }
+        }
+        return false;
     }
 
 }
