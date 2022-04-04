@@ -19,13 +19,13 @@ Scenario: Edit the employee working on the activity successfully
 	When the employee with the initials "name2" is replaced by the employee with the initials "name3"
 	Then the activity has the employee with the initials "name3"
 
-#Scenario: Edit the name of an activity without being project manager
-#	Given that the user with the initials "MOHE" is not manager of the project
-#	And there is a project called "clean"
-#	And there is an activity with the name "vaccum"
-#	When the name of the activity is edited to "spillMilk"
-#	Then the error message "Requires project manager" is given
-#
+Scenario: Edit the name of an activity without being project manager
+	Given there is a project with project name "Project 1"
+	And the user with initials "name" is not the manager of the project
+	And the project have an activity named "testing"
+	When the name of the activity is edited to "spillMilk"
+	Then the error message "Projectmanager is not registered" is given
+
 #Scenario: Edit the employee working on the activity without being project manager
 #	Given that the user with the initials "MOHE" is not manager of the project
 #	And there is a project called "clean"

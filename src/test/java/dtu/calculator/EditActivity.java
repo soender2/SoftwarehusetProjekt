@@ -50,6 +50,11 @@ public class EditActivity {
         assertEquals(string, testData.activity.getEmployeeId());
     }
 
+    @When("the name of the activity is edited to {string}")
+    public void the_name_of_the_activity_is_edited_to(String string) {
+        testData.activity.setName(string);
+    }
+
 
 
 }
