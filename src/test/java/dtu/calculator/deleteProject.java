@@ -36,7 +36,7 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                testData.errorMessageHolder.setErrorMessage(e.getMessage());
+                this.errorMessageHolder.setErrorMessage(e.getMessage());
             }
         }
 
@@ -68,7 +68,7 @@ import system.app.*;
         public void there_isn_t_a_project_with_project_name(String string) {
 
             assertFalse(testData.pma.existProjectName(string));
-            testData.errorMessageHolder.setErrorMessage("project doesn't exist");
+            this.errorMessageHolder.setErrorMessage("project doesn't exist");
 
         }
 
