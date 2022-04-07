@@ -26,7 +26,7 @@ Scenario: Edit the name of an activity without being project manager
 	When the name of the activity is edited to "spillMilk"
 	Then the error message "Projectmanager is not registered" is given
 
-#Scenario: Edit the employee working on the activity without being project manager
+Scenario: Edit the employee working on the activity without being project manager
 	Given there is a project with project name "Project 1"
 	And the user with initials "name" is not the manager of the project
 	And the project have an activity named "testing"
