@@ -15,6 +15,8 @@ import system.app.Employee;
 import system.app.PMA;
 import system.app.Project;
 
+import java.awt.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -26,8 +28,8 @@ public class AddActivity {
     ErrorMessageHolder errorMessageHolder;
 
     public AddActivity(TestData testData, ErrorMessageHolder errorMessageHolder){
-        this.errorMessageHolder = errorMessageHolder;
         this.testData = testData;
+        this.errorMessageHolder = errorMessageHolder;
     }
 
     @Given("the activity with the name {string} is not in the project")
@@ -50,7 +52,7 @@ public class AddActivity {
     public void the_activity_with_the_name_is_already_added_to_the_project(String string) {
         Activity activity = new Activity(string);
         testData.project.addActivity(activity);
-        errorMessageHolder.setErrorMessage("Activity already exists");
+        this.errorMessageHolder.setErrorMessage("Activity already exists");
     }
 
 }

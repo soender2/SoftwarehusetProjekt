@@ -36,7 +36,7 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                testData.errorMessageHolder.setErrorMessage(e.getMessage());
+                this.errorMessageHolder.setErrorMessage(e.getMessage());
             }
         }
 
@@ -56,21 +56,19 @@ import system.app.*;
             try {
                 assertTrue(testData.project.isProjectManager(employee));
             } catch (OperationNotAllowed e) {
-                errorMessageHolder.setErrorMessage(e.getMessage());
-
+                this.errorMessageHolder.setErrorMessage(e.getMessage());
             }
-
         }
         @Then("the error message {string} is given")
         public void the_error_message_is_given(String errormessage) {
-            assertEquals(errormessage, errorMessageHolder.getErrorMessage());
+            assertEquals(errormessage, this.errorMessageHolder.getErrorMessage());
         }
 
         @Given("there isn't a project with project name {string}")
         public void there_isn_t_a_project_with_project_name(String string) {
 
             assertFalse(testData.pma.existProjectName(string));
-            errorMessageHolder.setErrorMessage("project doesn't exist");
+            this.errorMessageHolder.setErrorMessage("project doesn't exist");
 
         }
 

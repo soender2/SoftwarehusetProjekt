@@ -21,7 +21,11 @@ public class Employee {
     }
 
     public boolean EmployeeAvailable() {
-        return this.activities.size() < 10;
+        if(this.activities == null || this.activities.size() < 10) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

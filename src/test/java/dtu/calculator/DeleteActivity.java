@@ -22,10 +22,9 @@ public class DeleteActivity {
     Activity activity;
     ErrorMessageHolder errorMessageHolder;
 
-    public DeleteActivity(TestData testData,ErrorMessageHolder errorMessageHolder ) {
+    public DeleteActivity(TestData testData, ErrorMessageHolder errorMessageHolder) {
         this.testData = testData;
         this.testData.pma = new PMA();
-
         this.errorMessageHolder = errorMessageHolder;
     }
 
@@ -53,7 +52,7 @@ public class DeleteActivity {
         try {
             assertFalse(testData.project.projectContainsActivity());
         } catch (OperationNotAllowed e) {
-            errorMessageHolder.setErrorMessage(e.getMessage());
+            this.errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
 }

@@ -29,7 +29,7 @@ public class Activity {
     }
 
     public String getEmployeeId() {
-        return employee.employeeId;
+        return this.employee.employeeId;
     }
 
     public String getName(){
