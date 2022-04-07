@@ -12,9 +12,10 @@ public class Employee {
         this.employeeId = employeeId;
     }
 
-    /*
+
     public int getDailyWorkedHours() {
-    }*/
+        return this.timeWorked;
+    }
 
     public String getEmployeeId() {
         return employeeId;

@@ -74,7 +74,11 @@ public class Project {
         } else {
             return false;
         }
+    }
 
+    public void deleteActivity(Activity activity) throws OperationNotAllowed {
+       if(!projectContainsActivity())
+            this.activities.remove(activity);
     }
 
 
