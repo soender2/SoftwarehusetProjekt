@@ -22,11 +22,12 @@ public class StaffEmployee {
     Employee employee;
     TestData testData;
     Activity activity;
+    ErrorMessageHolder errorMessageHolder;
 
-    public StaffEmployee(TestData testData) {
+    public StaffEmployee(TestData testData, ErrorMessageHolder errorMessageHolder) {
         this.testData = testData;
         this.testData.pma = new PMA();
-        this.testData.errorMessageHolder = new ErrorMessageHolder();
+        this.errorMessageHolder = errorMessageHolder;
     }
 
     @Given("the activity named {string} is not staffed")
@@ -36,31 +37,39 @@ public class StaffEmployee {
 
     @Given("the given employee named {string} is available")
     public void the_given_employee_named_is_available(String string) {
-        ArrayList<Employee> availableemployees = testData.pma.availableEmployees();
-
-        for(Employee employee: availableemployees) {
-            if(employee.employeeId.equals(string)) {
-                assertTrue(employee.EmployeeAvailable());
-            }
-        }
+        Employee worker = new Employee(string);
+        testData.pma.addEmployee(worker);
+        assertTrue(testData.pma.isEmployeeAvailable(string));
     }
+
     @When("the user {string} staffs the employee {string} to the activity {string}")
     public void the_user_staffs_the_employee_to_the_activity(String string, String string2, String string3) {
-        ArrayList<Employee> availableemployees = testData.pma.availableEmployees();
-        Employee worker = null;
-
-        for(Employee employee: availableemployees) {
-            if(employee.employeeId.equals(string2)) {
-                worker = employee;
-            }
+        if(testData.project.getProjectManager() == null || !testData.project.getProjectManager().employeeId.equals(string)) {
+            this.errorMessageHolder.setErrorMessage("Projectmanager is not registered");
+        } else {
+            Activity activity = testData.project.getActivity(string3);
+            activity.assignEmployeeActivities(testData.pma.getEmployee(string2));
+            testData.project.addActivity(activity);
         }
-        assert worker != null;
-        testData.project.getActivity(string3).assignEmployeeActivities(worker);
     }
+
+
     @Then("the employee {string} is staffed to the activity {string}")
     public void the_employee_is_staffed_to_the_activity(String string, String string2) {
-        System.out.println(testData.project.getActivity(string2).getEmployeeId());
         assertEquals(string, testData.project.getActivity(string2).getEmployeeId());
     }
 
+    @Given("the given employee named {string} is not available")
+    public void the_given_employee_named_is_not_available(String string) {
+        assertFalse(testData.pma.isEmployeeAvailable(string));
+        this.errorMessageHolder.setErrorMessage("Employee is not available");
+    }
+
+    @Given("the activity named {string} is already staffed")
+    public void the_activity_named_is_already_staffed(String string) {
+        Employee employee = new Employee("test");
+        testData.project.getActivity(string).assignEmployeeActivities(employee);
+        assertTrue(testData.project.getActivity(string).isActivityStaffed());
+        this.errorMessageHolder.setErrorMessage("Activity is already staffed");
+    }
 }
