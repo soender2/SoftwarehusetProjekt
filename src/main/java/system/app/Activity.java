@@ -1,5 +1,6 @@
 package system.app;
 
+
 public class Activity {
     String name;
     Employee employee;
@@ -7,6 +8,7 @@ public class Activity {
     int timeEstimate;
     int startTime;
     int endTime;
+    PMA pma;
 
     public Activity(String name) {
         this.name = name;
@@ -24,8 +26,16 @@ public class Activity {
         this.timeHolder += timeHolder;
     }
 
+    public void editTimeSchedule(int startTime, int endTime){
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public void setName(String name){
         this.name = name;
+    }
+    public void setEmployee(Employee employee){
+        this.employee = employee;
     }
 
     public String getEmployeeId() {
@@ -36,8 +46,11 @@ public class Activity {
         return this.name;
     }
 
+    public void seekAssistance(Activity activity){
+        activity.setEmployee(pma.availableEmployees().get(0));
+        pma.availableEmployees().remove(0);
 
-
+    }
 
 
 
