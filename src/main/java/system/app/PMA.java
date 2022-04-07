@@ -2,9 +2,12 @@ package system.app;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertTrue;
+
 public class PMA {
     ArrayList<Employee> employees;
     ArrayList<Project> projects;
+    Employee employee;
 
     public PMA() {
         projects = new ArrayList<Project>();
@@ -14,6 +17,7 @@ public class PMA {
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
+
 
     public void addProject(Project project) {
         projects.add(project);
@@ -28,16 +32,25 @@ public class PMA {
     }
 
     public boolean existProjectName(String projectname) {
-        for(Project project: projects) {
-            if(project.name.equals(projectname)) {
+        for (Project project : projects) {
+            if (project.name.equals(projectname)) {
                 return true;
             }
         }
         return false;
     }
 
+
+
+
     public ArrayList<Employee> availableEmployees() {
-        return employees;
+        ArrayList<Employee> availableEmployees = new ArrayList<>();
+        for(Employee employee : employees) {
+            if(employee.EmployeeAvailable()){
+                availableEmployees.add(employee);
+            }
+        }
+        return availableEmployees;
     }
 
     public Employee getEmployee(String employee_id) {
@@ -58,5 +71,4 @@ public class PMA {
         }
         return false;
     }
-
 }
