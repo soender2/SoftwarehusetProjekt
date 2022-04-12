@@ -16,7 +16,7 @@ public class SceneManager {
      */
 
     public static void changeScene(String fxml) throws IOException {
-        mainScene.setRoot(FXMLLoader.load(SceneManager.class.getResource("/" + fxml)));
+        mainScene.setRoot(FXMLLoader.load(SceneManager.class.getClassLoader().getResource("/" + fxml)));
     }
 
     public static void setMainScene(Scene mainScene) {

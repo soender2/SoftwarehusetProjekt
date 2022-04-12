@@ -20,11 +20,13 @@ public class MainScene {
     private Scene scene;
     private Parent root;
     @FXML
-    public TextField Initials;
+    public TextField Initials_holder;
     public Button loginbutton;
 
 
     public void goToSystem(ActionEvent event) throws IOException {
+        initSystem();
+
         URL url = new File("src/test/resources/fxml/System.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -32,6 +34,12 @@ public class MainScene {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void initSystem() {
+        String user_initals = Initials_holder.getText();
+        System.setInitials(user_initals);
+    }
+
 
 
 }
