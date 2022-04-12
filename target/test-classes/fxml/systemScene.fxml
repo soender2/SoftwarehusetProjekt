@@ -17,6 +17,10 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button layoutX="421.0" layoutY="223.0" mnemonicParsing="false" onAction="#Show_initials" text="Button" />
+      <Button fx:id="showInit" layoutX="913.0" layoutY="21.0" mnemonicParsing="false" onAction="#Show_initials" text="Show my Initials">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
