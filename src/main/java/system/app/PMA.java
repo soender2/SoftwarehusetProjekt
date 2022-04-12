@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertTrue;
 
 public class PMA {
-    ArrayList<Employee> employees;
-    ArrayList<Project> projects;
+    public ArrayList<Employee> employees;
+    public ArrayList<Project> projects;
     Employee employee;
 
     public PMA() {

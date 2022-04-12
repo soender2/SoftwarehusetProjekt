@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,10 +18,11 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="showInit" layoutX="913.0" layoutY="21.0" mnemonicParsing="false" onAction="#Show_initials" text="Show my Initials">
+      <Button fx:id="showInit" layoutX="913.0" layoutY="21.0" mnemonicParsing="false" onAction="#Show_initials" text="Show user Initials">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <ListView fx:id="list_project" editable="true" layoutX="412.0" layoutY="161.0" prefHeight="419.0" prefWidth="391.0" />
    </children>
 </AnchorPane>

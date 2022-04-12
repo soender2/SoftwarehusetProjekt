@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Project {
     int id;
-    String name;
+    public String name;
     Employee projectManager;
     int finishTime;
     int timeSpent;
