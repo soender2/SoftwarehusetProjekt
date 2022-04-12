@@ -18,7 +18,6 @@ public class PMA {
         employees.add(employee);
     }
 
-
     public void addProject(Project project) {
         projects.add(project);
     }
