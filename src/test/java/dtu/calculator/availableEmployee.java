@@ -17,8 +17,6 @@ public class availableEmployee {
     TestData testData;
     Activity activity;
 
-
-    HEJ
     public availableEmployee(TestData testData) {
         this.testData = testData;
         this.testData.pma = new PMA();
