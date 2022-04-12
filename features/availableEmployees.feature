@@ -1,5 +1,5 @@
-Feature: See available employees
-  Descriptions: A project manager wants to see available employees
+Feature: Available employees
+  Descriptions: A project manager wants to see Available employees
   Actors: user
 
 
