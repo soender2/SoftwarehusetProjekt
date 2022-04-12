@@ -4,10 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.System">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.systemScene">
    <children>
       <Label layoutX="510.0" layoutY="63.0" text="Det virker!!!">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="user_label" layoutX="868.0" layoutY="21.0" prefHeight="44.0" prefWidth="324.0">
          <font>
             <Font size="36.0" />
          </font>

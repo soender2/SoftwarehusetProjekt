@@ -25,19 +25,21 @@ public class MainScene {
 
 
     public void goToSystem(ActionEvent event) throws IOException {
-        initSystem();
-
-        URL url = new File("src/test/resources/fxml/System.fxml").toURI().toURL();
+        URL url = new File("src/test/resources/fxml/systemScene.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        initSystem();
         stage.show();
+
     }
 
-    public void initSystem() {
-        String user_initals = Initials_holder.getText();
-        System.setInitials(user_initals);
+    public void initSystem() throws IOException{
+            String user_initals = Initials_holder.getText();
+            systemScene.setInitials(user_initals);
+
+
     }
 
 
