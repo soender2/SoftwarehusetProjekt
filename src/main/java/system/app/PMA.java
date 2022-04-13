@@ -30,6 +30,15 @@ public class PMA {
         return projects.contains(project);
     }
 
+    public Project getProject(String name) {
+        for (Project project : projects) {
+            if (project.name.equals(name)) {
+                return project;
+            }
+        }
+        return null;
+    }
+
     public boolean existProjectName(String projectname) {
         for (Project project : projects) {
             if (project.name.equals(projectname)) {

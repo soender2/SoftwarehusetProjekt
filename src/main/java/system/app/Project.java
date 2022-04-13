@@ -10,7 +10,7 @@ public class Project {
     Employee projectManager;
     int finishTime;
     int timeSpent;
-    ArrayList<Activity> activities;
+    public ArrayList<Activity> activities;
 
     public Project(String name) {
         this.name = name;

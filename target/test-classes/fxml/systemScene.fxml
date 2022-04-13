@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.systemScene">
    <children>
-      <Label layoutX="510.0" layoutY="63.0" text="Det virker!!!">
+      <Label layoutX="578.0" layoutY="70.0" text="PMA">
          <font>
-            <Font size="36.0" />
+            <Font size="48.0" />
          </font>
       </Label>
       <Label fx:id="user_label" layoutX="868.0" layoutY="21.0" prefHeight="44.0" prefWidth="324.0">
@@ -24,9 +24,20 @@
          </font>
       </Button>
       <ListView fx:id="list_project" editable="true" layoutX="72.0" layoutY="223.0" prefHeight="521.0" prefWidth="391.0" style="-fx-background-color: #e7e7e7;" />
-      <Button layoutX="158.0" layoutY="156.0" mnemonicParsing="false" text="Show my projects">
+      <Label layoutX="73.0" layoutY="161.0" prefHeight="44.0" prefWidth="168.0" text="My projects:">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <ListView fx:id="list_activity" editable="true" layoutX="514.0" layoutY="223.0" prefHeight="521.0" prefWidth="391.0" style="-fx-background-color: #e7e7e7;" visible="false" />
+      <Label fx:id="activityString" layoutX="520.0" layoutY="185.0" prefHeight="29.0" prefWidth="301.0" visible="false">
          <font>
             <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="projectActivities" layoutX="272.0" layoutY="158.0" mnemonicParsing="false" onAction="#showProjectActivities" prefHeight="45.0" prefWidth="193.0" text="Show project activities">
+         <font>
+            <Font size="18.0" />
          </font>
       </Button>
    </children>
