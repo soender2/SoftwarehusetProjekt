@@ -34,8 +34,7 @@ public class systemScene implements Initializable {
     public Label user_label;
     public Button showInit;
     PMA pma;
-    String[] myProjectsName;
-    String userProjects;
+    public String[] myProjectsName;
 
     public void Show_initials(javafx.event.ActionEvent actionEvent) {
         showInit.setVisible(false);
@@ -53,15 +52,6 @@ public class systemScene implements Initializable {
         Employee employee2 = new Employee("mol");
         this.pma.addEmployee(employee1);
         this.pma.addEmployee(employee2);
-
-        myProjectsName = new String[pma.projects.size()];
-        int i = 0;
-        for(Project project: this.pma.projects) {
-            myProjectsName[i] = project.name;
-            i++;
-        }
-        System.out.println(Arrays.toString(myProjectsName));
-
     }
 
     public static void setInitials(String initials) {
@@ -69,14 +59,24 @@ public class systemScene implements Initializable {
     }
 
 
-
     @FXML private ListView<String> list_project;
-    ObservableList<String> myProjects = FXCollections.observableArrayList();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        myProjectsName = new String[pma.projects.size()];
+        int i = 0;
+        for(Project project: this.pma.projects) {
+            myProjectsName[i] = project.name;
+            i++;
+        }
+        ObservableList<String> myProjects = FXCollections.observableArrayList(myProjectsName);
         list_project.setItems(myProjects);
     }
+
+
+
+
+
+
+
 }

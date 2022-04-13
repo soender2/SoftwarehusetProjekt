@@ -34,6 +34,7 @@ public class MainScene  {
         scene = new Scene(root);
         stage.setScene(scene);
         initSystem();
+
         stage.show();
 
     }
