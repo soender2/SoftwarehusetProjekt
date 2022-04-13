@@ -102,9 +102,7 @@ public class systemScene implements Initializable {
             if(activityString.getText().trim().isEmpty()) {
                 activityString.setText("Aktivities for " + Project + ":");
                 activityString.setVisible(true);
-
             } else {
-                activityString.setText("");
                 activityString.setText("Aktivities for " + Project + ":");
                 activityString.setVisible(true);
             }
