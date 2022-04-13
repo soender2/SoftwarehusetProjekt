@@ -7,9 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import javafx.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class MainScene  {
     @FXML
     public TextField Initials_holder;
     public Button loginbutton;
-
+    String user_initials;
 
 
     public void goToSystem(ActionEvent event) throws IOException {
@@ -34,17 +34,13 @@ public class MainScene  {
         scene = new Scene(root);
         stage.setScene(scene);
         initSystem();
-
         stage.show();
-
     }
 
-    public void initSystem() throws IOException{
-            String user_initials = Initials_holder.getText();
-            systemScene.setInitials(user_initials);
+    public void initSystem() {
+        String user_initials = Initials_holder.getText();
+        systemScene.setInitials(user_initials);
     }
-
-
 
 }
 

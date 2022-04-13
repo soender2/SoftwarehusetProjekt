@@ -6,8 +6,8 @@ public class Activity {
     Employee employee;
     int timeHolder;
     int timeEstimate;
-    int startTime;
-    int endTime;
+    public int startTime;
+    public int endTime;
     PMA pma;
 
     public Activity(String name) {
