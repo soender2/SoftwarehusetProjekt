@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import system.app.Activity;
+import system.app.Employee;
 import system.app.PMA;
 import system.app.Project;
 
@@ -142,17 +143,23 @@ public class ActivityScene implements Initializable {
 
 
     public Activity createActivty() {
+        //get values from boksene
         String nameActivity = name_activity_add.getText();
         String startTime = start_time_add.getText();
         String endTime = end_time_add.getText();
         String employeeId = employye_add.getText();
 
+
+        //create activity
         Activity activity = new Activity(nameActivity);
         activity.editTimeSchedule(Integer.parseInt(startTime), Integer.parseInt(endTime));
-
-        //vi skal lige finde ud af hvordan man tilføjer en employee-objekt
-        return activity;
-
+        for(Employee employee: pma.employees) {
+            if(employee.employeeId.equals(employeeId)) {
+                activity.assignEmployeeActivities(employee);
+                break;
+            }
+        }
+       return activity;
     }
 
     public void Done_action(ActionEvent event) {
