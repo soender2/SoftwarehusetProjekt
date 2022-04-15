@@ -138,4 +138,15 @@ public class systemScene implements Initializable {
     }
 
 
+
+
+    public void showMyProjects(ActionEvent event) throws IOException {
+        myProjectScene.initMyProjectScene(pma, myProjectScene.projectname, myProjectScene.employeeId);
+        URL url1 = new File("src/test/resources/fxml/myProjectScene.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url1);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

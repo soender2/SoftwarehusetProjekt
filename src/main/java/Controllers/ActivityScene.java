@@ -49,7 +49,6 @@ public class ActivityScene implements Initializable {
 
     public ActivityScene() {
         ActivityScene.project = ActivityScene.pma.getProject(projectname);
-
         myActivityNames = new String[ActivityScene.project.activities.size()];
         int i = 0;
         for(Activity activity: ActivityScene.project.activities) {
@@ -159,7 +158,7 @@ public class ActivityScene implements Initializable {
                 break;
             }
         }
-       return activity;
+        return activity;
     }
 
     public void Done_action(ActionEvent event) {
@@ -186,7 +185,6 @@ public class ActivityScene implements Initializable {
         ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
         list_activity.setItems(myProjects);
         list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
 
     }
 }
