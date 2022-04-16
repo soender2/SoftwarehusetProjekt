@@ -18,11 +18,6 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="showInit" layoutX="913.0" layoutY="21.0" mnemonicParsing="false" onAction="#Show_initials" text="Show user Initials">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <ListView fx:id="list_project" editable="true" layoutX="72.0" layoutY="223.0" prefHeight="521.0" prefWidth="391.0" style="-fx-background-color: #e7e7e7;" />
       <Label layoutX="73.0" layoutY="161.0" prefHeight="44.0" prefWidth="168.0" text="Projects">
          <font>

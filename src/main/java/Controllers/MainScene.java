@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 
 public class MainScene  {
+    public static String name;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -34,6 +35,7 @@ public class MainScene  {
         scene = new Scene(root);
         stage.setScene(scene);
         initSystem();
+        name = Initials_holder.getText();
         stage.show();
     }
 
