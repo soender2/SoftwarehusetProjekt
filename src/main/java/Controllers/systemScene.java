@@ -1,5 +1,6 @@
 package Controllers;
 
+import Exceptions.IllegalInputException;
 import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -11,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import system.app.Activity;
 import system.app.Employee;
@@ -35,7 +33,10 @@ public class systemScene implements Initializable {
     public ListView<String> list_activity;
     public Label activityString;
     public Button projectActivities;
+    public Button add_Employee;
+    public TextField add_Employee_holder;
     private ListView<String> myListProject;
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
 
     public static String initials;
@@ -52,6 +53,8 @@ public class systemScene implements Initializable {
     public static void setPma(PMA pma) {
         systemScene.pma = pma;
     }
+
+
 
 
     public systemScene() {
@@ -136,5 +139,35 @@ public class systemScene implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void add_Employee(ActionEvent actionEvent) throws IllegalInputException {
+
+        if (add_Employee_holder.getText().length() == 4 && add_Employee_holder.getText().matches("^[a-zA-Z]*$")){
+            Employee employee = new Employee(add_Employee_holder.getText());
+            pma.addEmployee(employee);
+            add_Employee_holder.clear();
+
+        } else if (!(add_Employee_holder.getText().length() <=4)){
+            errorAlert.setContentText("Illegal input. Input Must be initials of four letters or less");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("Illegal input. Input Must be initials of four letters or less");
+
+        } else if (!(add_Employee_holder.getText().matches("^[a-zA-Z]*$"))){
+            errorAlert.setContentText("Illegal character input. Must be alphabetic letters");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("Illegal character input. Must be alphabetic letters");
+
+        } else if(add_Employee_holder.getText().isEmpty()) {
+            errorAlert.setContentText("Field is Empty");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("Field is Empty");
+
+        } else {
+            errorAlert.setContentText("Illegal input. User does not exist");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("Illegal input. User does not exist");
+        }
+
     }
 }
