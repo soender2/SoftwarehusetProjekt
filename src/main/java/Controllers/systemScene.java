@@ -11,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import system.app.Activity;
 import system.app.Employee;
@@ -35,6 +32,8 @@ public class systemScene implements Initializable {
     public ListView<String> list_activity;
     public Label activityString;
     public Button projectActivities;
+    public Button availableEmployees;
+    public ListView<String> listAvailableEmployees;
     private ListView<String> myListProject;
 
 
@@ -136,5 +135,12 @@ public class systemScene implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void showAvailableEmployees(ActionEvent event) {
+        String[] availableEmployees = pma.getAvailableEmployees();
+        ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+        listAvailableEmployees.setItems(employees);
+        listAvailableEmployees.setVisible(true);
     }
 }

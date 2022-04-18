@@ -34,5 +34,11 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Button fx:id="availableEmployees" layoutX="868.0" layoutY="17.0" mnemonicParsing="false" onAction="#showAvailableEmployees" text="Show Available employees">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ListView fx:id="listAvailableEmployees" editable="true" layoutX="868.0" layoutY="74.0" prefHeight="339.0" prefWidth="313.0" style="-fx-background-color: #e7e7e7;" visible="false" />
    </children>
 </AnchorPane>
