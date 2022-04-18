@@ -26,7 +26,7 @@
       </Label>
       <Button fx:id="projectActivities" layoutX="272.0" layoutY="158.0" mnemonicParsing="false" onAction="#showProjectActivities" prefHeight="45.0" prefWidth="193.0" text="Show project">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Button>
       <Button fx:id="myProjects" layoutX="16.0" layoutY="17.0" mnemonicParsing="false" onAction="#showMyProjects" text="Show my projects">
@@ -34,5 +34,11 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Button fx:id="availableEmployees" layoutX="694.0" layoutY="158.0" mnemonicParsing="false" onAction="#showAvailableEmployees" text="Show Available employees">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ListView fx:id="listAvailableEmployees" editable="true" layoutX="694.0" layoutY="231.0" prefHeight="339.0" prefWidth="313.0" style="-fx-background-color: #e7e7e7;" visible="false" />
    </children>
 </AnchorPane>

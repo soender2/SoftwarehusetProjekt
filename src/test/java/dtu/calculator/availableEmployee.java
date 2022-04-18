@@ -31,7 +31,6 @@ public class availableEmployee {
 
     @Then("there is given a list with all names of available employees")
     public void there_is_given_a_list_with_all_names_of_available_employees() {
-        System.out.println(testData.pma.availableEmployees());
         for (Employee employee : testData.pma.availableEmployees()) {
                 assertTrue(employee.EmployeeAvailable());
         }

@@ -16,6 +16,9 @@ public class Activity {
 
     public void assignEmployeeActivities(Employee employee) {
         this.employee = employee;
+        if(!employee.activities.contains(this)) {
+            employee.activities.add(this);
+        }
     }
 
     public boolean isActivityStaffed() {

@@ -9,6 +9,7 @@ public class Employee {
     int[][] annaulTime;
 
     public Employee(String employeeId) {
+        this.activities = new ArrayList<>();
         this.employeeId = employeeId;
     }
 

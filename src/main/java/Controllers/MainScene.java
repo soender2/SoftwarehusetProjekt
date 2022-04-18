@@ -90,8 +90,10 @@ public class MainScene  {
         pma.addEmployee(employee2);
         Activity activity0 = new Activity("Make Cards");
         Activity activity1 = new Activity("Make Diagrams");
-        activity0.assignEmployeeActivities(employee0);
-        activity1.assignEmployeeActivities(employee1);
+        activity0.assignEmployeeActivities(employee2);
+        activity1.assignEmployeeActivities(employee2);
+
+
         activity0.editTimeSchedule(50, 200);
         pma.getProject("project0").addActivity(activity0);
         pma.getProject("project0").addActivity(activity1);
