@@ -55,29 +55,9 @@ public class systemScene implements Initializable {
 
 
     public systemScene() {
-        if(systemScene.pma == null) {
-            systemScene.pma = new PMA();
+        if(systemScene.pma != null) {
             showName();
-
-            Project project0 = new Project("project0");
-            Project project1 = new Project("project1");
-            systemScene.pma.addProject(project0);
-            systemScene.pma.addProject(project1);
-            Employee employee0 = new Employee("Øl");
-            Employee employee1 = new Employee("er");
-            Employee employee2 = new Employee("godt");
-            systemScene.pma.addEmployee(employee0);
-            systemScene.pma.addEmployee(employee1);
-            Activity activity0 = new Activity("Make Cards");
-            Activity activity1 = new Activity("Make Diagrams");
-            activity0.assignEmployeeActivities(employee0);
-            activity1.assignEmployeeActivities(employee1);
-            activity0.editTimeSchedule(50, 200);
-            systemScene.pma.getProject("project0").addActivity(activity0);
-            systemScene.pma.getProject("project0").addActivity(activity1);
-            systemScene.pma.getProject("project1").addActivity(activity1);
         }
-
     }
 
     public void showName(){
