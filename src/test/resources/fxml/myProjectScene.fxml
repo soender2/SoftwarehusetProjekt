@@ -15,6 +15,11 @@
             <Font size="30.0" />
          </font>
       </Label>
+   <Label fx:id="user_label" layoutX="868.0" layoutY="21.0" prefHeight="44.0" prefWidth="324.0">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
       <Button fx:id="myProjectActivities" layoutX="282.0" layoutY="168.0" mnemonicParsing="false" onAction="#showMyProjectActivities" prefHeight="45.0" prefWidth="193.0" text="Show project">
          <font>
             <Font size="18.0" />

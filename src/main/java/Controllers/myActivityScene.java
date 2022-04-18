@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class myActivityScene implements Initializable {
     private static Project project;
+    public Label user_label;
     public String[] myActivityNames;
     public Label project_name;
     public Label employee_name;
@@ -39,6 +41,15 @@ public class myActivityScene implements Initializable {
         myActivityScene.employeeId = employeeId;
     }
 
+
+    public void showName(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                user_label.setText("User: " + MainScene.name);
+            }
+        });
+    }
 
 
     public myActivityScene() {
@@ -66,7 +77,7 @@ public class myActivityScene implements Initializable {
         //starter med at gøre activitybox empty
         myActivity_box_name.setVisible(false);
 
-
+        showName();
         //Initialiser viewList
         ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
         list_myactivity.setItems(myProjects);

@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class myProjectScene implements Initializable {
     public static String employeeId;
     public Button myProjectActivities;
     public String[] myProjectsName;
+    public Label user_label;
 
 
     public static void initMyProjectScene(PMA pma, String projectname, String employeeId) {
@@ -38,6 +40,15 @@ public class myProjectScene implements Initializable {
 
 
     public void showProjectActivities(ActionEvent actionEvent) {
+    }
+
+    public void showName(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                user_label.setText("User: " + MainScene.name);
+            }
+        });
     }
 
     @FXML
@@ -51,6 +62,7 @@ public class myProjectScene implements Initializable {
             myProjectsName[i] = project.name;
             i++;
         }
+        showName();
         ObservableList<String> myProjects = FXCollections.observableArrayList(myProjectsName);
         list_myproject.setItems(myProjects);
         list_myproject.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);

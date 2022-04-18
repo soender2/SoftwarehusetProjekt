@@ -1,6 +1,7 @@
 package Controllers;
 
 import io.cucumber.java.en_old.Ac;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import java.util.ResourceBundle;
 public class ActivityScene implements Initializable {
 
     private static Project project;
+    public Label user_label;
     public String[] myActivityNames;
     public Label project_name;
     public TitledPane Activity_box_name;
@@ -45,6 +47,14 @@ public class ActivityScene implements Initializable {
         ActivityScene.projectname = projectname;
     }
 
+    public void showName(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                user_label.setText("User: " + MainScene.name);
+            }
+        });
+    }
 
 
     public ActivityScene() {
@@ -71,6 +81,7 @@ public class ActivityScene implements Initializable {
         //starter med at gøre activitybox empty
         Activity_box_name.setVisible(false);
 
+        showName();
         //gør de tre bokse og knap usynlige til at starte med
         employye_add.setVisible(false);
         start_time_add.setVisible(false);
