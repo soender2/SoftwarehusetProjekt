@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import system.app.Activity;
 import system.app.Employee;
@@ -138,9 +139,15 @@ public class systemScene implements Initializable {
     }
 
     public void showAvailableEmployees(ActionEvent event) {
-        String[] availableEmployees = pma.getAvailableEmployees();
-        ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
-        listAvailableEmployees.setItems(employees);
-        listAvailableEmployees.setVisible(true);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                String[] availableEmployees = pma.getAvailableEmployees();
+                ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+                listAvailableEmployees.setItems(employees);
+                listAvailableEmployees.setVisible(true);
+            }
+        });
     }
+
 }
