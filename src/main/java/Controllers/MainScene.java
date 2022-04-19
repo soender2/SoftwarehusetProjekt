@@ -98,8 +98,8 @@ public class MainScene  {
         pma.getProject("project0").addActivity(activity0);
         pma.getProject("project0").addActivity(activity1);
         pma.getProject("project1").addActivity(activity1);
+        pma.getProject("project0").setProjectManager(employee1);
         systemScene.setPma(pma);
     }
-
 }
 

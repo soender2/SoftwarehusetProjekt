@@ -19,10 +19,10 @@ import system.app.Project;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class myActivityScene implements Initializable {
-    private static Project project;
     public Label user_label;
     public String[] myActivityNames;
     public Label project_name;
@@ -53,16 +53,17 @@ public class myActivityScene implements Initializable {
 
 
     public myActivityScene() {
-        myActivityScene.project = myActivityScene.pma.getProject(projectname);
-
-        myActivityNames = new String[myActivityScene.project.activities.size()];
-        int i = 0;
-        for(Activity activity: myActivityScene.project.activities) {
-            myActivityNames[i] = activity.getName();
-            i++;
+        ArrayList<String> activityNames = new ArrayList<>();
+        for(Activity activity: myActivityScene.pma.getProject(myActivityScene.projectname).activities) {
+            if(activity.getEmployeeId().equals(myActivityScene.employeeId)) {
+                activityNames.add(activity.getName());
+            }
         }
-
-
+        int i = 0;
+        myActivityNames = new String[activityNames.size()];
+        for(String activityName: activityNames) {
+            myActivityNames[i] = activityName;
+        }
     }
 
 
@@ -72,7 +73,7 @@ public class myActivityScene implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialiser Projectname
-        project_name.setText("ProjectName: " + myActivityScene.project.name);
+        project_name.setText("ProjectName: " + myActivityScene.pma.getProject(myActivityScene.projectname).name);
 
         //starter med at gøre activitybox empty
         myActivity_box_name.setVisible(false);
@@ -82,7 +83,6 @@ public class myActivityScene implements Initializable {
         ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
         list_myactivity.setItems(myProjects);
         list_myactivity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
     }
 
     public void initActivity_box_name() {
@@ -92,22 +92,22 @@ public class myActivityScene implements Initializable {
         myActivity_box_name.setVisible(true);
 
         //initialiser for employee, start_time og slut_time
-        if(!project.getActivity(myActivityName).isActivityStaffed()) {
+        if(!myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).isActivityStaffed()) {
             employee_name.setText("Employee: None");
         } else {
-            employee_name.setText("Employee: " + project.getActivity(myActivityName).getEmployeeId());
+            employee_name.setText("Employee: " + myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).getEmployeeId());
         }
 
-        if(project.getActivity(myActivityName).startTime == 0) {
+        if(myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).startTime == 0) {
             start_time.setText("Starttime: None");
         } else {
-            start_time.setText("Starttime: " + project.getActivity(myActivityName).startTime);
+            start_time.setText("Starttime: " + myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).startTime);
         }
 
-        if(project.getActivity(myActivityName).endTime == 0) {
+        if(myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).endTime == 0) {
             end_time.setText("Starttime: None");
         } else {
-            end_time.setText("Starttime: " + project.getActivity(myActivityName).endTime);
+            end_time.setText("Starttime: " + myActivityScene.pma.getProject(myActivityScene.projectname).getActivity(myActivityName).endTime);
         }
 
     }

@@ -32,15 +32,12 @@ public class myProjectScene implements Initializable {
     public Label user_label;
 
 
-    public static void initMyProjectScene(PMA pma, String projectname, String employeeId) {
+    public static void initMyProjectScene(PMA pma, String employeeId) {
         myProjectScene.pma = pma;
-        myProjectScene.projectname = projectname;
         myProjectScene.employeeId = employeeId;
     }
 
 
-    public void showProjectActivities(ActionEvent actionEvent) {
-    }
 
     public void showName(){
         Platform.runLater(new Runnable() {
@@ -56,14 +53,10 @@ public class myProjectScene implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myProjectsName = new String[pma.projects.size()];
-        int i = 0;
-        for(Project project: systemScene.pma.projects) {
-            myProjectsName[i] = project.name;
-            i++;
-        }
+        Employee employee = myProjectScene.pma.getEmployee(myProjectScene.employeeId);
+
         showName();
-        ObservableList<String> myProjects = FXCollections.observableArrayList(myProjectsName);
+        ObservableList<String> myProjects = FXCollections.observableArrayList(employee.getEmployeeProjects());
         list_myproject.setItems(myProjects);
         list_myproject.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
@@ -82,8 +75,8 @@ public class myProjectScene implements Initializable {
 
 
     public void showMyProjectActivities(ActionEvent event) throws IOException {
-        String projects = list_myproject.getSelectionModel().getSelectedItems().get(0);
-        myActivityScene.myInitActivityScene(pma,projects,employeeId);
+        String projectName = list_myproject.getSelectionModel().getSelectedItems().get(0);
+        myActivityScene.myInitActivityScene(myProjectScene.pma,projectName,employeeId);
         URL url = new File("src/test/resources/fxml/MyActivityScene.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
