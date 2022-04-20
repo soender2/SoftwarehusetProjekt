@@ -81,13 +81,12 @@ public class PMA {
         return null;
     }
 
-    public boolean isEmployeeAvailable(String name){
-
+    public boolean isEmployeeAvailable(String name) throws OperationNotAllowed{
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
                 return employee.EmployeeAvailable();
             }
         }
-        return false;
+        throw new OperationNotAllowed("Employee is not available");
     }
 }

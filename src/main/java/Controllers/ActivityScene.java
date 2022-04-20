@@ -1,5 +1,6 @@
 package Controllers;
 
+import Exceptions.IllegalInputException;
 import io.cucumber.java.en_old.Ac;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -40,6 +41,7 @@ public class ActivityScene implements Initializable {
     public TextField end_time_add;
     public Button Done_button;
     public TextField name_activity_add;
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
 
     public static void initActivityScene(PMA pma, String projectname) {
@@ -152,12 +154,20 @@ public class ActivityScene implements Initializable {
     }
 
 
-    public Activity createActivty() {
+    public Activity createActivty() throws IllegalInputException {
         //get values from boksene
         String nameActivity = name_activity_add.getText();
         String startTime = start_time_add.getText();
         String endTime = end_time_add.getText();
         String employeeId = employye_add.getText();
+
+        try {
+            pma.isEmployeeAvailable(employeeId);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
 
 
         //create activity
@@ -172,7 +182,16 @@ public class ActivityScene implements Initializable {
         return activity;
     }
 
-    public void Done_action(ActionEvent event) {
+    public void Done_action(ActionEvent event) throws IllegalInputException {
+        Employee employee = pma.getEmployee(MainScene.name);
+        try {
+            pma.getProject(ActivityScene.projectname).isProjectManager(employee);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
+
 
         pma.getProject(ActivityScene.projectname).addActivity(createActivty());
         ActivityScene.project = ActivityScene.pma.getProject(projectname);
@@ -197,5 +216,33 @@ public class ActivityScene implements Initializable {
         list_activity.setItems(myProjects);
         list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+    }
+
+    public void delete_activity_action(ActionEvent event) throws IllegalInputException {
+        Employee employee = pma.getEmployee(MainScene.name);
+        try {
+            pma.getProject(ActivityScene.projectname).isProjectManager(employee);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
+
+
+        String activityName = list_activity.getSelectionModel().getSelectedItems().get(0);
+        Activity removedActivity = ActivityScene.pma.getProject(ActivityScene.projectname).getActivity(activityName);
+        ActivityScene.pma.getProject(ActivityScene.projectname).removeActivity(removedActivity);
+
+
+        myActivityNames = new String[ActivityScene.project.activities.size()];
+        int i = 0;
+        for(Activity activity: ActivityScene.project.activities) {
+            myActivityNames[i] = activity.getName();
+            i++;
+        }
+
+        ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
+        list_activity.setItems(myProjects);
+        list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 }

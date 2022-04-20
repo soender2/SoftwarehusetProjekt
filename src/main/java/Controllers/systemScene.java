@@ -99,24 +99,6 @@ public class systemScene implements Initializable {
     }
 
 
-    /*
-    public void showProjectActivities(ActionEvent event) {
-        ObservableList<String> projects;
-        projects = list_project.getSelectionModel().getSelectedItems();
-        for(String Project : projects){
-            list_activity.setVisible(true);
-            if(activityString.getText().trim().isEmpty()) {
-                activityString.setText("Aktivities for " + Project + ":");
-                activityString.setVisible(true);
-            } else {
-                activityString.setText("Aktivities for " + Project + ":");
-                activityString.setVisible(true);
-            }
-        }
-
-    }
-    */
-
     public void showProjectActivities(ActionEvent event) throws IOException {
         String projects = list_project.getSelectionModel().getSelectedItems().get(0);
         ActivityScene.initActivityScene(pma, projects);
@@ -129,10 +111,8 @@ public class systemScene implements Initializable {
     }
 
 
-
-
     public void showMyProjects(ActionEvent event) throws IOException {
-        myProjectScene.initMyProjectScene(pma, myProjectScene.projectname, myProjectScene.employeeId);
+        myProjectScene.initMyProjectScene(systemScene.pma, systemScene.initials);
         URL url1 = new File("src/test/resources/fxml/myProjectScene.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url1);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
