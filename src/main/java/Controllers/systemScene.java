@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import system.app.Activity;
+import javafx.scene.control.*;
 import system.app.Employee;
 import system.app.PMA;
 import system.app.Project;
@@ -33,6 +34,8 @@ public class systemScene implements Initializable {
     public ListView<String> list_activity;
     public Label activityString;
     public Button projectActivities;
+    public Button availableEmployees;
+    public ListView<String> listAvailableEmployees;
     public Button add_Employee;
     public TextField add_Employee_holder;
     private ListView<String> myListProject;
@@ -123,22 +126,26 @@ public class systemScene implements Initializable {
 
     public void add_Employee(ActionEvent actionEvent) throws IllegalInputException {
 
-        if (add_Employee_holder.getText().length() == 4 && add_Employee_holder.getText().matches("^[a-zA-Z]*$")){
+        if (add_Employee_holder.getText().length() == 4 && add_Employee_holder.getText().matches("^[a-zA-Z]*$")) {
             Employee employee = new Employee(add_Employee_holder.getText());
             pma.addEmployee(employee);
+            String[] availableEmployees = pma.getAvailableEmployees();
+            ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+            listAvailableEmployees.setItems(employees);
+            listAvailableEmployees.setVisible(true);
             add_Employee_holder.clear();
 
-        } else if (!(add_Employee_holder.getText().length() <=4)){
+        } else if (!(add_Employee_holder.getText().length() <= 4)) {
             errorAlert.setContentText("Illegal input. Input Must be initials of four letters or less");
             errorAlert.showAndWait();
             throw new IllegalInputException("Illegal input. Input Must be initials of four letters or less");
 
-        } else if (!(add_Employee_holder.getText().matches("^[a-zA-Z]*$"))){
+        } else if (!(add_Employee_holder.getText().matches("^[a-zA-Z]*$"))) {
             errorAlert.setContentText("Illegal character input. Must be alphabetic letters");
             errorAlert.showAndWait();
             throw new IllegalInputException("Illegal character input. Must be alphabetic letters");
 
-        } else if(add_Employee_holder.getText().isEmpty()) {
+        } else if (add_Employee_holder.getText().isEmpty()) {
             errorAlert.setContentText("Field is Empty");
             errorAlert.showAndWait();
             throw new IllegalInputException("Field is Empty");
@@ -148,6 +155,14 @@ public class systemScene implements Initializable {
             errorAlert.showAndWait();
             throw new IllegalInputException("Illegal input. User does not exist");
         }
+    }
 
+
+    public void showAvailableEmployees(ActionEvent event) {
+        String[] availableEmployees = pma.getAvailableEmployees();
+        ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+        listAvailableEmployees.setItems(employees);
+        listAvailableEmployees.setVisible(true);
     }
 }
+

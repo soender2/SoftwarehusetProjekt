@@ -22,6 +22,9 @@ import system.app.Project;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ActivityScene implements Initializable {
@@ -244,5 +247,13 @@ public class ActivityScene implements Initializable {
         ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
         list_activity.setItems(myProjects);
         list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+
+    public void Delete_activity_action(ActionEvent event) {
+        String itemToRemove = list_activity.getSelectionModel().getSelectedItem();
+        
+        list_activity.getItems().remove(itemToRemove);
+
     }
 }
