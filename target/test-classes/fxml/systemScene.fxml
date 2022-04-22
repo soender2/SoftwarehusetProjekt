@@ -36,13 +36,13 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="availableEmployees" layoutX="868.0" layoutY="17.0" mnemonicParsing="false" onAction="#showAvailableEmployees" text="Show Available employees">
+      <Button fx:id="availableEmployees" layoutX="568.0" layoutY="161.0" mnemonicParsing="false" onAction="#showAvailableEmployees" text="Show Available employees">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <ListView fx:id="listAvailableEmployees" editable="true" layoutX="868.0" layoutY="74.0" prefHeight="339.0" prefWidth="313.0" style="-fx-background-color: #e7e7e7;" visible="false" />
-      <Button fx:id="add_Employee" layoutX="306.0" layoutY="87.0" mnemonicParsing="false" onAction="#add_Employee" prefHeight="45.0" prefWidth="127.0" text="add Employee" />
-      <TextField fx:id="add_Employee_holder" layoutX="295.0" layoutY="48.0" />
+      <ListView fx:id="listAvailableEmployees" editable="true" layoutX="544.0" layoutY="223.0" prefHeight="521.0" prefWidth="347.0" style="-fx-background-color: #e7e7e7;" visible="false" />
+      <Button fx:id="add_Employee" layoutX="958.0" layoutY="161.0" mnemonicParsing="false" onAction="#add_Employee" prefHeight="45.0" prefWidth="127.0" text="add Employee" />
+      <TextField fx:id="add_Employee_holder" layoutX="942.0" layoutY="223.0" />
    </children>
 </AnchorPane>
