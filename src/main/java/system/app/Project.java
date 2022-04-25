@@ -36,9 +36,11 @@ public class Project {
     }
 
     public boolean isProjectManager(Employee employee) throws OperationNotAllowed {
+        assert true: "precondition for isProjectManager";
         if(this.projectManager == null || employee != this.projectManager) {
             throw new OperationNotAllowed("Projectmanager is not registered");
         } else {
+            assert true: "postcondition for isProjectManager";
             return true;
         }
     }
