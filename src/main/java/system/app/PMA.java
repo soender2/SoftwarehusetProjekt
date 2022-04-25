@@ -1,5 +1,7 @@
 package system.app;
 
+import Exceptions.OperationNotAllowed;
+
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertTrue;
@@ -85,7 +87,7 @@ public class PMA {
         return null;
     }
 
-    public boolean isEmployeeAvailable(String name) throws OperationNotAllowed{
+    public boolean isEmployeeAvailable(String name) throws OperationNotAllowed {
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
                 return employee.EmployeeAvailable();

@@ -1,8 +1,7 @@
 package Controllers;
 
-import Exceptions.IllegalInputException;
+import Exceptions.OperationNotAllowed;
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,8 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import system.app.Activity;
-import javafx.scene.control.*;
 import system.app.Employee;
 import system.app.PMA;
 import system.app.Project;
@@ -23,10 +20,7 @@ import system.app.Project;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 
 public class systemScene implements Initializable {
@@ -121,7 +115,7 @@ public class systemScene implements Initializable {
         stage.show();
     }
 
-    public void add_Employee(ActionEvent actionEvent) throws IllegalInputException {
+    public void add_Employee(ActionEvent actionEvent) throws OperationNotAllowed {
 
         if (add_Employee_holder.getText().length() == 4 && add_Employee_holder.getText().matches("^[a-zA-Z]*$")) {
             Employee employee = new Employee(add_Employee_holder.getText());
@@ -131,28 +125,28 @@ public class systemScene implements Initializable {
         } else if (!(add_Employee_holder.getText().length() <= 4)) {
             errorAlert.setContentText("Illegal input. Input Must be initials of four letters or less");
             errorAlert.showAndWait();
-            throw new IllegalInputException("Illegal input. Input Must be initials of four letters or less");
+            throw new OperationNotAllowed("Illegal input. Input Must be initials of four letters or less");
 
         } else if (!(add_Employee_holder.getText().matches("^[a-zA-Z]*$"))) {
             errorAlert.setContentText("Illegal character input. Must be alphabetic letters");
             errorAlert.showAndWait();
-            throw new IllegalInputException("Illegal character input. Must be alphabetic letters");
+            throw new OperationNotAllowed("Illegal character input. Must be alphabetic letters");
 
         } else if (add_Employee_holder.getText().isEmpty()) {
             errorAlert.setContentText("Field is Empty");
             errorAlert.showAndWait();
-            throw new IllegalInputException("Field is Empty");
+            throw new OperationNotAllowed("Field is Empty");
 
         } else {
             errorAlert.setContentText("Illegal input. User does not exist");
             errorAlert.showAndWait();
-            throw new IllegalInputException("Illegal input. User does not exist");
+            throw new OperationNotAllowed("Illegal input. User does not exist");
         }
     }
 
 
 
-    public void add_project_action(ActionEvent event) throws IllegalInputException {
+    public void add_project_action(ActionEvent event) throws OperationNotAllowed {
         if(!pma.existProjectName(add_project_textfield.getText())) {
             Project project = new Project(add_project_textfield.getText());
             pma.addProject(project);
@@ -170,7 +164,7 @@ public class systemScene implements Initializable {
         } else {
             errorAlert.setContentText("project already exists");
             errorAlert.showAndWait();
-            throw new IllegalInputException("project already exists");
+            throw new OperationNotAllowed("project already exists");
         }
 
     }
