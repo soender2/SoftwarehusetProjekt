@@ -13,5 +13,13 @@ public class DesignByContractTest {
         pma.getProject(project.name);
 
     }
+    @Test
+    public void existProjectNameTest(){
+        PMA pma = new PMA();
+        Project project = new Project("name");
+        pma.addProject(project);
+        pma.existProjectName("name");
+
+    }
 
 }
