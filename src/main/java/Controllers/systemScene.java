@@ -38,6 +38,7 @@ public class systemScene implements Initializable {
     public ListView<String> listAvailableEmployees;
     public Button add_Employee;
     public TextField add_Employee_holder;
+    public TextField add_project_textfield;
     private ListView<String> myListProject;
     private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
@@ -93,10 +94,6 @@ public class systemScene implements Initializable {
         ObservableList<String> myProjects = FXCollections.observableArrayList(myProjectsName);
         list_project.setItems(myProjects);
         list_project.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-
-        myActivityName = new String[pma.getProject("project0").activities.size()];
-        myActivityName1 = new String[pma.getProject("project1").activities.size()];
 
 
     }
@@ -163,6 +160,29 @@ public class systemScene implements Initializable {
         ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
         listAvailableEmployees.setItems(employees);
         listAvailableEmployees.setVisible(true);
+    }
+
+    public void add_project_action(ActionEvent event) throws IllegalInputException {
+        if(!pma.existProjectName(add_project_textfield.getText())) {
+            Project project = new Project(add_project_textfield.getText());
+            pma.addProject(project);
+            myProjectsName = new String[pma.projects.size()];
+            int i = 0;
+
+            for(Project projectname: systemScene.pma.projects) {
+                myProjectsName[i] = projectname.name;
+                i++;
+            }
+            ObservableList<String> myProjects = FXCollections.observableArrayList(myProjectsName);
+            list_project.setItems(myProjects);
+            list_project.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            add_project_textfield.clear();
+        } else {
+            errorAlert.setContentText("project already exists");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("project already exists");
+        }
+
     }
 }
 

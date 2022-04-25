@@ -47,12 +47,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="715.0" layoutY="400.0" mnemonicParsing="false" onAction="#Add_activity_action" prefHeight="32.0" prefWidth="210.0" text="Add an Activity" />
-      <TextField fx:id="name_activity_add" alignment="CENTER" layoutX="715.0" layoutY="447.0" prefHeight="26.0" prefWidth="210.0" promptText="Name of Activity" />
-      <TextField fx:id="employye_add" alignment="CENTER" layoutX="715.0" layoutY="488.0" prefHeight="26.0" prefWidth="210.0" promptText="EmployeeId" />
-      <TextField fx:id="start_time_add" alignment="CENTER" layoutX="715.0" layoutY="530.0" prefHeight="26.0" prefWidth="210.0" promptText="Start time" />
-      <TextField fx:id="end_time_add" alignment="CENTER" layoutX="715.0" layoutY="574.0" prefHeight="26.0" prefWidth="210.0" promptText="End time" />
-      <Button fx:id="Done_button" layoutX="798.0" layoutY="623.0" mnemonicParsing="false" onAction="#Done_action" text="Done" />
+      <Button layoutX="820.0" layoutY="400.0" mnemonicParsing="false" onAction="#Add_activity_action" prefHeight="32.0" prefWidth="210.0" text="Add an Activity" />
+      <TextField fx:id="name_activity_add" alignment="CENTER" layoutX="820.0" layoutY="446.0" prefHeight="26.0" prefWidth="210.0" promptText="Name of Activity" />
+      <TextField fx:id="employye_add" alignment="CENTER" layoutX="820.0" layoutY="487.0" prefHeight="26.0" prefWidth="210.0" promptText="EmployeeId" />
+      <TextField fx:id="start_time_add" alignment="CENTER" layoutX="820.0" layoutY="526.0" prefHeight="26.0" prefWidth="210.0" promptText="Start time" />
+      <TextField fx:id="end_time_add" alignment="CENTER" layoutX="820.0" layoutY="566.0" prefHeight="26.0" prefWidth="210.0" promptText="End time" />
+      <Button fx:id="Done_button" layoutX="903.0" layoutY="611.0" mnemonicParsing="false" onAction="#Done_action" text="Done" />
+      <Button layoutX="565.0" layoutY="400.0" mnemonicParsing="false" onAction="#Delete_activity_action" prefHeight="32.0" prefWidth="210.0" text="Delete Activity" />
       <Button layoutX="400.0" layoutY="625.0" mnemonicParsing="false" onAction="#delete_activity_action" prefHeight="46.0" prefWidth="112.0" text="Delete Activity" />
    </children>
 </AnchorPane>

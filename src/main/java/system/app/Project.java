@@ -49,8 +49,10 @@ public class Project {
 
     public void addActivity(Activity activity) {
         activities.add(activity);
-        if(!activity.employee.projects.contains(this)) {
-            activity.employee.projects.add(this);
+        if(activity.employee != null) {
+            if(!activity.employee.projects.contains(this)) {
+                activity.employee.projects.add(this);
+            }
         }
     }
 

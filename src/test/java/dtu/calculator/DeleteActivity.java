@@ -33,8 +33,8 @@ public class DeleteActivity {
         testData.activity = new Activity(string);
 
         this.activity = new Activity(string);
-        testData.project.addActivity(this.activity);
-        assertTrue(testData.project.hasActivity(activity));
+        testData.project.addActivity(testData.activity);
+        assertTrue(testData.project.hasActivity(testData.activity));
     }
 
     @When("the user deletes the activity")

@@ -187,6 +187,13 @@ public class ActivityScene implements Initializable {
 
     public void Done_action(ActionEvent event) throws IllegalInputException {
         Employee employee = pma.getEmployee(MainScene.name);
+
+        if(pma.getProject(ActivityScene.projectname).nameExistActivity(name_activity_add.getText())) {
+            errorAlert.setContentText("Activity already exists");
+            errorAlert.showAndWait();
+            throw new IllegalInputException("Activity already exists");
+
+        }
         try {
             pma.getProject(ActivityScene.projectname).isProjectManager(employee);
         } catch (Exception e) {
