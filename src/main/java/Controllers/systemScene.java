@@ -126,10 +126,6 @@ public class systemScene implements Initializable {
         if (add_Employee_holder.getText().length() == 4 && add_Employee_holder.getText().matches("^[a-zA-Z]*$")) {
             Employee employee = new Employee(add_Employee_holder.getText());
             pma.addEmployee(employee);
-            String[] availableEmployees = pma.getAvailableEmployees();
-            ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
-            listAvailableEmployees.setItems(employees);
-            listAvailableEmployees.setVisible(true);
             add_Employee_holder.clear();
 
         } else if (!(add_Employee_holder.getText().length() <= 4)) {
@@ -155,12 +151,6 @@ public class systemScene implements Initializable {
     }
 
 
-    public void showAvailableEmployees(ActionEvent event) {
-        String[] availableEmployees = pma.getAvailableEmployees();
-        ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
-        listAvailableEmployees.setItems(employees);
-        listAvailableEmployees.setVisible(true);
-    }
 
     public void add_project_action(ActionEvent event) throws IllegalInputException {
         if(!pma.existProjectName(add_project_textfield.getText())) {
