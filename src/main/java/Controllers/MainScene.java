@@ -94,8 +94,10 @@ public class MainScene  {
         activity1.assignEmployeeActivities(employee2);
         activity0.editTimeSchedule(50, 200);
         pma.getProject("project0").addActivity(activity0);
+        pma.getEmployee(activity0.getEmployeeId()).projects.add(project0);
         pma.getProject("project0").addActivity(activity1);
         pma.getProject("project1").addActivity(activity1);
+        pma.getEmployee(activity1.getEmployeeId()).projects.add(project1);
         pma.getProject("project0").setProjectManager(employee1);
         systemScene.setPma(pma);
     }

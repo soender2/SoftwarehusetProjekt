@@ -42,7 +42,9 @@
          </font>
       </Button>
       <ListView fx:id="listAvailableEmployees" editable="true" layoutX="544.0" layoutY="223.0" prefHeight="521.0" prefWidth="347.0" style="-fx-background-color: #e7e7e7;" visible="false" />
-      <Button fx:id="add_Employee" layoutX="958.0" layoutY="161.0" mnemonicParsing="false" onAction="#add_Employee" prefHeight="45.0" prefWidth="127.0" text="add Employee" />
+      <Button fx:id="add_Employee" layoutX="958.0" layoutY="161.0" mnemonicParsing="false" onAction="#add_Employee" prefHeight="45.0" prefWidth="127.0" text="Add Employee" />
       <TextField fx:id="add_Employee_holder" layoutX="942.0" layoutY="223.0" />
+      <Button layoutX="958.0" layoutY="286.0" mnemonicParsing="false" onAction="#add_project_action" prefHeight="46.0" prefWidth="127.0" text="Add Project" />
+      <TextField fx:id="add_project_textfield" layoutX="947.0" layoutY="348.0" />
    </children>
 </AnchorPane>
