@@ -1,0 +1,9 @@
+Test case 1: Check for name length
+a Yes
+aa Yes
+aaa Yes
+aaaa Yes
+aaaaa No
+aaaaaa No
+aaaaaaa No
+aaaaaaaa No
