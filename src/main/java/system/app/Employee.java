@@ -16,12 +16,25 @@ public class Employee {
         this.projects = new ArrayList<>();
     }
 
+    public String[] getEmployeeProjects() {
+        assert true: "precondition for getEmployeeProjects";
+        String[] projectsName = new String[this.projects.size()];
 
-    /*
+
+        int i = 0;
+        for(Project project: projects) {
+            projectsName[i] = project.name;
+            i++;
+
+        }
+        assert projectsName[0].equals("name"): "postcondition for getEmployeeProjects";
+        return projectsName;
+    }
+
+
     public int getDailyWorkedHours() {
         return this.timeWorked;
     }
-    */
 
     public String getEmployeeId() {
         return employeeId;

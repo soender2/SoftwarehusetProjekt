@@ -40,7 +40,7 @@ public class Project {
         if(this.projectManager == null || employee != this.projectManager) {
             throw new OperationNotAllowed("Projectmanager is not registered");
         } else {
-            assert true: "postcondition for isProjectManager";
+            assert !(this.projectManager == null || employee != this.projectManager): "postcondition for isProjectManager";
             return true;
         }
     }

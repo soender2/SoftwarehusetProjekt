@@ -75,8 +75,10 @@ public class PMA {
     }
 
     public boolean isEmployeeAvailable(String name) throws OperationNotAllowed {
+        assert true: "precondition for isEmployeeAvailable";
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
+                assert employee.employeeId.equals(name): "postcondition for isEmployeeAvailable";
                 return employee.EmployeeAvailable();
             }}
         throw new OperationNotAllowed("Employee is not available");
