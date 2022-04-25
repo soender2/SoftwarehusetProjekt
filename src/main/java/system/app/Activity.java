@@ -12,6 +12,7 @@ public class Activity {
 
     public Activity(String name) {
         this.name = name;
+        this.employee = null;
     }
 
     public void assignEmployeeActivities(Employee employee) {

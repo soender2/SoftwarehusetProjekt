@@ -31,15 +31,13 @@ public class DeleteActivity {
     @Given("the project have an activity named {string}")
     public void the_project_have_an_activity_named(String string) {
         testData.activity = new Activity(string);
-
-        this.activity = new Activity(string);
-        testData.project.addActivity(this.activity);
-        assertTrue(testData.project.hasActivity(activity));
+        testData.project.addActivity(testData.activity);
+        assertTrue(testData.project.hasActivity(testData.activity));
     }
 
     @When("the user deletes the activity")
     public void the_user_deletes_the_activity() {
-        testData.project.removeActivity(this.activity);
+        testData.project.removeActivity(testData.activity);
     }
 
     @Then("the activity named {string} is deleted from the project")

@@ -51,9 +51,6 @@ public class Project {
 
     public void addActivity(Activity activity) {
         activities.add(activity);
-        if(!activity.employee.projects.contains(this)) {
-            activity.employee.projects.add(this);
-        }
     }
 
     public boolean nameExistActivity(String name) {
