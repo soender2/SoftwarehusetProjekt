@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 
 public class MainScene  {
+    public static String name;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -28,12 +29,15 @@ public class MainScene  {
 
 
     public void goToSystem(ActionEvent event) throws IOException {
+
         URL url = new File("src/test/resources/fxml/systemScene.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         initSystem();
+        name = Initials_holder.getText();
+        System.out.println(name);
         stage.show();
     }
 

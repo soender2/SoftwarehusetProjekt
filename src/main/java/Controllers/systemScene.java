@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,17 +40,13 @@ public class systemScene implements Initializable {
 
     public static String initials;
     public Label user_label;
-    public Button showInit;
+
     public static PMA pma;
     public String[] myProjectsName;
     public String[] myActivityName;
     public String[] myActivityName1;
 
 
-    public void Show_initials(javafx.event.ActionEvent actionEvent) {
-        showInit.setVisible(false);
-        this.user_label.setText("User initials: " + initials);
-    }
 
     public static void setPma(PMA pma) {
         systemScene.pma = pma;
@@ -59,6 +56,12 @@ public class systemScene implements Initializable {
     public systemScene() {
         if(systemScene.pma == null) {
             systemScene.pma = new PMA();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    user_label.setText("User: " + MainScene.name);
+                }
+            });
 
             Project project0 = new Project("project0");
             Project project1 = new Project("project1");
