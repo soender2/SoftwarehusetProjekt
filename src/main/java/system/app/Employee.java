@@ -20,12 +20,14 @@ public class Employee {
         assert true: "precondition for getEmployeeProjects";
         String[] projectsName = new String[this.projects.size()];
 
+
         int i = 0;
         for(Project project: projects) {
             projectsName[i] = project.name;
             i++;
+
         }
-        assert true: "postcondition for getEmployeeProjects";
+        assert projectsName[0].equals("name"): "postcondition for getEmployeeProjects";
         return projectsName;
     }
 

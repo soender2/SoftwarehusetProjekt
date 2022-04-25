@@ -1,6 +1,7 @@
 package dtu.calculator;
 import Exceptions.OperationNotAllowed;
 import org.junit.Test;
+import system.app.Activity;
 import system.app.Employee;
 import system.app.PMA;
 import system.app.Project;
@@ -9,6 +10,8 @@ public class DesignByContractTest {
     PMA pma = new PMA();
     Project project = new Project("name");
     Employee employee = new Employee("Initials");
+
+    Activity activity = new Activity("Aktivitet");
     @Test
     public void getProjectTest(){
         pma.addProject(project);
@@ -33,7 +36,12 @@ public class DesignByContractTest {
 
     @Test
     public void getEmployeeProjectsTest(){
-        pma.addProject(project);
+        project.addActivity(activity);
+        project.getActivity("Aktivitet").setEmployee(employee);
+        employee.projects.add(project);
+        employee.getEmployeeProjects();
+
+
 
 
     }
