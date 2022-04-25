@@ -21,7 +21,7 @@ public class DesignByContractTest {
     }
     @Test
     public void isProjectManagerTest() throws OperationNotAllowed {
-        pma.addProject(project);
+        existProjectNameTest();
         pma.getProject("name").setProjectManager(employee);
         pma.getProject("name").isProjectManager(employee);
     }
@@ -30,6 +30,14 @@ public class DesignByContractTest {
         pma.employees.add(employee);
         pma.getAvailableEmployees();
     }
+
+    @Test
+    public void getEmployeeProjectsTest(){
+        pma.addProject(project);
+
+
+    }
+
 
 
 

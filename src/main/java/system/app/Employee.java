@@ -17,12 +17,15 @@ public class Employee {
     }
 
     public String[] getEmployeeProjects() {
+        assert true: "precondition for getEmployeeProjects";
         String[] projectsName = new String[this.projects.size()];
+
         int i = 0;
         for(Project project: projects) {
             projectsName[i] = project.name;
             i++;
         }
+        assert true: "postcondition for getEmployeeProjects";
         return projectsName;
     }
 
