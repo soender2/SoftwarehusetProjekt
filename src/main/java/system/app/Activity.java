@@ -50,12 +50,6 @@ public class Activity {
         return this.name;
     }
 
-    public void seekAssistance(Activity activity){
-        activity.setEmployee(pma.availableEmployees().get(0));
-        pma.availableEmployees().remove(0);
-
-    }
-
 
 
 

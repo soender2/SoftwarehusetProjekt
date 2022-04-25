@@ -1,4 +1,4 @@
-package system.app;
+package Exceptions;
 
 public class OperationNotAllowed extends Exception {
 

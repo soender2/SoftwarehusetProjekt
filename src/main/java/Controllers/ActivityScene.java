@@ -1,7 +1,6 @@
 package Controllers;
 
-import Exceptions.IllegalInputException;
-import io.cucumber.java.en_old.Ac;
+import Exceptions.OperationNotAllowed;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,9 +18,6 @@ import system.app.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ActivityScene implements Initializable {
@@ -156,7 +152,7 @@ public class ActivityScene implements Initializable {
     }
 
 
-    public Activity createActivty() throws IllegalInputException {
+    public Activity createActivty() throws OperationNotAllowed {
         //get values from boksene
         String nameActivity = name_activity_add.getText();
         String startTime = start_time_add.getText();
@@ -168,7 +164,7 @@ public class ActivityScene implements Initializable {
         } catch (Exception e) {
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
-            throw new IllegalInputException(e.getMessage());
+            throw new OperationNotAllowed(e.getMessage());
         }
 
 
@@ -184,13 +180,13 @@ public class ActivityScene implements Initializable {
         return activity;
     }
 
-    public void Done_action(ActionEvent event) throws IllegalInputException {
+    public void Done_action(ActionEvent event) throws OperationNotAllowed {
         Employee employee = pma.getEmployee(MainScene.name);
 
         if (pma.getProject(ActivityScene.projectname).nameExistActivity(name_activity_add.getText())) {
             errorAlert.setContentText("Activity already exists");
             errorAlert.showAndWait();
-            throw new IllegalInputException("Activity already exists");
+            throw new OperationNotAllowed("Activity already exists");
 
         }
         try {
@@ -198,7 +194,7 @@ public class ActivityScene implements Initializable {
         } catch (Exception e) {
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
-            throw new IllegalInputException(e.getMessage());
+            throw new OperationNotAllowed(e.getMessage());
         }
 
 
@@ -226,14 +222,14 @@ public class ActivityScene implements Initializable {
 
     }
 
-    public void delete_activity_action(ActionEvent event) throws IllegalInputException {
+    public void delete_activity_action(ActionEvent event) throws OperationNotAllowed {
         Employee employee = pma.getEmployee(MainScene.name);
         try {
             pma.getProject(ActivityScene.projectname).isProjectManager(employee);
         } catch (Exception e) {
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
-            throw new IllegalInputException(e.getMessage());
+            throw new OperationNotAllowed(e.getMessage());
         }
 
 
@@ -262,7 +258,7 @@ public class ActivityScene implements Initializable {
 
     }
 
-    public void showAvailableEmployees(ActionEvent actionEvent) throws IllegalInputException {
+    public void showAvailableEmployees(ActionEvent actionEvent) throws OperationNotAllowed {
         try {
             pma.getProject(projectname).isProjectManager(pma.getEmployee(MainScene.name));
             String[] availableEmployees = pma.getAvailableEmployees();
@@ -272,7 +268,7 @@ public class ActivityScene implements Initializable {
         } catch (Exception e) {
             errorAlert.setContentText(e.getMessage());
             errorAlert.showAndWait();
-            throw new IllegalInputException(e.getMessage());
+            throw new OperationNotAllowed(e.getMessage());
             }
         }
     }

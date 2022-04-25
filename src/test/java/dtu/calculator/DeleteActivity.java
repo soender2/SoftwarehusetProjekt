@@ -1,6 +1,6 @@
 package dtu.calculator;
 
-import io.cucumber.java.en_old.Ac;
+import Exceptions.OperationNotAllowed;
 import system.app.Employee;
 import system.app.PMA;
 
@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import io.cucumber.java.an.E;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
