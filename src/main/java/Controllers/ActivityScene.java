@@ -14,10 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import system.app.Activity;
-import system.app.Employee;
-import system.app.PMA;
-import system.app.Project;
+import system.app.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +41,8 @@ public class ActivityScene implements Initializable {
     public TextField end_time_add;
     public Button Done_button;
     public TextField name_activity_add;
+    public Button availableEmployees;
+    public ListView listAvailableEmployees;
     private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
 
@@ -52,7 +51,7 @@ public class ActivityScene implements Initializable {
         ActivityScene.projectname = projectname;
     }
 
-    public void showName(){
+    public void showName() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -66,7 +65,7 @@ public class ActivityScene implements Initializable {
         ActivityScene.project = ActivityScene.pma.getProject(projectname);
         myActivityNames = new String[ActivityScene.project.activities.size()];
         int i = 0;
-        for(Activity activity: ActivityScene.project.activities) {
+        for (Activity activity : ActivityScene.project.activities) {
             myActivityNames[i] = activity.getName();
             i++;
         }
@@ -109,19 +108,19 @@ public class ActivityScene implements Initializable {
         Activity_box_name.setVisible(true);
 
         //initialiser for employee, start_time og slut_time
-        if(!project.getActivity(activityName).isActivityStaffed()) {
+        if (!project.getActivity(activityName).isActivityStaffed()) {
             employee_name.setText("Employee: None");
         } else {
             employee_name.setText("Employee: " + project.getActivity(activityName).getEmployeeId());
         }
 
-        if(project.getActivity(activityName).startTime == 0) {
+        if (project.getActivity(activityName).startTime == 0) {
             start_time.setText("Starttime: None");
         } else {
             start_time.setText("Starttime: " + project.getActivity(activityName).startTime);
         }
 
-        if(project.getActivity(activityName).endTime == 0) {
+        if (project.getActivity(activityName).endTime == 0) {
             end_time.setText("Starttime: None");
         } else {
             end_time.setText("Starttime: " + project.getActivity(activityName).endTime);
@@ -176,8 +175,8 @@ public class ActivityScene implements Initializable {
         //create activity
         Activity activity = new Activity(nameActivity);
         activity.editTimeSchedule(Integer.parseInt(startTime), Integer.parseInt(endTime));
-        for(Employee employee: pma.employees) {
-            if(employee.employeeId.equals(employeeId)) {
+        for (Employee employee : pma.employees) {
+            if (employee.employeeId.equals(employeeId)) {
                 activity.assignEmployeeActivities(employee);
                 break;
             }
@@ -188,7 +187,7 @@ public class ActivityScene implements Initializable {
     public void Done_action(ActionEvent event) throws IllegalInputException {
         Employee employee = pma.getEmployee(MainScene.name);
 
-        if(pma.getProject(ActivityScene.projectname).nameExistActivity(name_activity_add.getText())) {
+        if (pma.getProject(ActivityScene.projectname).nameExistActivity(name_activity_add.getText())) {
             errorAlert.setContentText("Activity already exists");
             errorAlert.showAndWait();
             throw new IllegalInputException("Activity already exists");
@@ -214,10 +213,9 @@ public class ActivityScene implements Initializable {
         employye_add.clear();
 
 
-
         myActivityNames = new String[ActivityScene.project.activities.size()];
         int i = 0;
-        for(Activity activity: ActivityScene.project.activities) {
+        for (Activity activity : ActivityScene.project.activities) {
             myActivityNames[i] = activity.getName();
             i++;
         }
@@ -246,7 +244,7 @@ public class ActivityScene implements Initializable {
 
         myActivityNames = new String[ActivityScene.project.activities.size()];
         int i = 0;
-        for(Activity activity: ActivityScene.project.activities) {
+        for (Activity activity : ActivityScene.project.activities) {
             myActivityNames[i] = activity.getName();
             i++;
         }
@@ -259,8 +257,22 @@ public class ActivityScene implements Initializable {
 
     public void Delete_activity_action(ActionEvent event) {
         String itemToRemove = list_activity.getSelectionModel().getSelectedItem();
-        
+
         list_activity.getItems().remove(itemToRemove);
 
     }
-}
+
+    public void showAvailableEmployees(ActionEvent actionEvent) throws IllegalInputException {
+        try {
+            pma.getProject(projectname).isProjectManager(pma.getEmployee(MainScene.name));
+            String[] availableEmployees = pma.getAvailableEmployees();
+            ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+            listAvailableEmployees.setItems(employees);
+            listAvailableEmployees.setVisible(true);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+            }
+        }
+    }
