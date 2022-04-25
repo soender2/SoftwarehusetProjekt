@@ -92,8 +92,6 @@ public class MainScene  {
         Activity activity1 = new Activity("Make Diagrams");
         activity0.assignEmployeeActivities(employee2);
         activity1.assignEmployeeActivities(employee2);
-
-
         activity0.editTimeSchedule(50, 200);
         pma.getProject("project0").addActivity(activity0);
         pma.getProject("project0").addActivity(activity1);

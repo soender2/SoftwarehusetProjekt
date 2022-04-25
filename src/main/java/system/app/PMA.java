@@ -31,8 +31,10 @@ public class PMA {
     }
 
     public Project getProject(String name) {
+        assert true: "precondition getProject";
         for (Project project : projects) {
             if (project.name.equals(name)) {
+                assert name.equals(project.name): "postcondition getProject";
                 return project;
             }
         }
@@ -40,8 +42,10 @@ public class PMA {
     }
 
     public boolean existProjectName(String projectname) {
+        assert true: "precondition existProjectName";
         for (Project project : projects) {
             if (project.name.equals(projectname)) {
+                assert project.name.equals(projectname): "postcondition existProjectName";
                 return true;
             }
         }
