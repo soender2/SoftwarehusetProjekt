@@ -31,8 +31,8 @@ public class AddProjectManager {
 
     @Given("there is a project with name {string} without a project manager")
     public void the_project_with_name_does_not_contain_a_project_manager(String string) {
-        testData.project = new Project(string);
-        assertFalse(testData.project.hasProjectManager());
+        testData.pma.projects.add(new Project(string));
+        assertFalse(testData.pma.getProject(string).hasProjectManager());
     }
 
     @When("the user with name {string} is added to the project")

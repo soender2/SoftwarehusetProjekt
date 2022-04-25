@@ -16,20 +16,12 @@ public class Employee {
         this.projects = new ArrayList<>();
     }
 
-    public String[] getEmployeeProjects() {
-        String[] projectsName = new String[this.projects.size()];
-        int i = 0;
-        for(Project project: projects) {
-            projectsName[i] = project.name;
-            i++;
-        }
-        return projectsName;
-    }
 
-
+    /*
     public int getDailyWorkedHours() {
         return this.timeWorked;
     }
+    */
 
     public String getEmployeeId() {
         return employeeId;

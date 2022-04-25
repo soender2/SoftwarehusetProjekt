@@ -32,6 +32,7 @@ public class PMA {
         return projects.contains(project);
     }
 
+
     public Project getProject(String name) {
         assert true: "precondition getProject";
         for (Project project : projects) {
@@ -49,8 +50,7 @@ public class PMA {
             if (project.name.equals(projectname)) {
                 assert project.name.equals(projectname): "postcondition existProjectName";
                 return true;
-            }
-        }
+            }}
         return false;
     }
 
@@ -61,29 +61,16 @@ public class PMA {
         for(Employee employee : employees) {
             if(employee.EmployeeAvailable()){
                 availableEmployees.add(employee);
-            }
-        }
+            }}
         return availableEmployees;
     }
 
-    public String[] getAvailableEmployees() {
-        String[] availableEmployees = new String[this.availableEmployees().size()];
-        int i = 0;
-        for(Employee employee : employees) {
-            if(employee.EmployeeAvailable()) {
-                availableEmployees[i] = employee.employeeId;
-            }
-            i++;
-        }
-        return availableEmployees;
-    }
 
     public Employee getEmployee(String employee_id) {
         for(Employee employee: employees) {
             if(employee.employeeId.equals(employee_id)) {
                 return employee;
-            }
-        }
+            }}
         return null;
     }
 
@@ -91,8 +78,7 @@ public class PMA {
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
                 return employee.EmployeeAvailable();
-            }
-        }
+            }}
         throw new OperationNotAllowed("Employee is not available");
     }
 }

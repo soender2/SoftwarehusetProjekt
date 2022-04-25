@@ -11,7 +11,4 @@ public class TestData {
     public Activity activity;
     public Employee employee;
     public ErrorMessageHolder errorMessageHolder;
-
-
-
 }

@@ -51,12 +51,22 @@ public class myProjectScene implements Initializable {
     @FXML
     private ListView<String> list_myproject;
 
+    public String[] getEmployeeProjects(Employee employee) {
+        String[] projectsName = new String[employee.projects.size()];
+        int i = 0;
+        for(Project project: employee.projects) {
+            projectsName[i] = project.name;
+            i++;
+        }
+        return projectsName;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Employee employee = myProjectScene.pma.getEmployee(myProjectScene.employeeId);
 
         showName();
-        ObservableList<String> myProjects = FXCollections.observableArrayList(employee.getEmployeeProjects());
+        ObservableList<String> myProjects = FXCollections.observableArrayList(getEmployeeProjects(employee));
         list_myproject.setItems(myProjects);
         list_myproject.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
