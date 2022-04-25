@@ -52,13 +52,24 @@ public class PMA {
 
 
 
-
     public ArrayList<Employee> availableEmployees() {
         ArrayList<Employee> availableEmployees = new ArrayList<>();
         for(Employee employee : employees) {
             if(employee.EmployeeAvailable()){
                 availableEmployees.add(employee);
             }
+        }
+        return availableEmployees;
+    }
+
+    public String[] getAvailableEmployees() {
+        String[] availableEmployees = new String[this.availableEmployees().size()];
+        int i = 0;
+        for(Employee employee : employees) {
+            if(employee.EmployeeAvailable()) {
+                availableEmployees[i] = employee.employeeId;
+            }
+            i++;
         }
         return availableEmployees;
     }
@@ -72,13 +83,12 @@ public class PMA {
         return null;
     }
 
-    public boolean isEmployeeAvailable(String name){
-
+    public boolean isEmployeeAvailable(String name) throws OperationNotAllowed{
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
                 return employee.EmployeeAvailable();
             }
         }
-        return false;
+        throw new OperationNotAllowed("Employee is not available");
     }
 }

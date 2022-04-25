@@ -36,7 +36,7 @@ public class StaffEmployee {
     }
 
     @Given("the given employee named {string} is available")
-    public void the_given_employee_named_is_available(String string) {
+    public void the_given_employee_named_is_available(String string) throws OperationNotAllowed {
         Employee worker = new Employee(string);
         testData.pma.addEmployee(worker);
         assertTrue(testData.pma.isEmployeeAvailable(string));
@@ -60,7 +60,7 @@ public class StaffEmployee {
     }
 
     @Given("the given employee named {string} is not available")
-    public void the_given_employee_named_is_not_available(String string) {
+    public void the_given_employee_named_is_not_available(String string) throws OperationNotAllowed {
         assertFalse(testData.pma.isEmployeeAvailable(string));
         this.errorMessageHolder.setErrorMessage("Employee is not available");
     }

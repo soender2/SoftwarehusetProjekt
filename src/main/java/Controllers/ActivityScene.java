@@ -1,6 +1,8 @@
 package Controllers;
 
+import Exceptions.IllegalInputException;
 import io.cucumber.java.en_old.Ac;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,11 +22,15 @@ import system.app.Project;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ActivityScene implements Initializable {
 
     private static Project project;
+    public Label user_label;
     public String[] myActivityNames;
     public Label project_name;
     public TitledPane Activity_box_name;
@@ -38,6 +44,7 @@ public class ActivityScene implements Initializable {
     public TextField end_time_add;
     public Button Done_button;
     public TextField name_activity_add;
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
 
     public static void initActivityScene(PMA pma, String projectname) {
@@ -45,11 +52,18 @@ public class ActivityScene implements Initializable {
         ActivityScene.projectname = projectname;
     }
 
+    public void showName(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                user_label.setText("User: " + MainScene.name);
+            }
+        });
+    }
 
 
     public ActivityScene() {
         ActivityScene.project = ActivityScene.pma.getProject(projectname);
-
         myActivityNames = new String[ActivityScene.project.activities.size()];
         int i = 0;
         for(Activity activity: ActivityScene.project.activities) {
@@ -72,6 +86,7 @@ public class ActivityScene implements Initializable {
         //starter med at gøre activitybox empty
         Activity_box_name.setVisible(false);
 
+        showName();
         //gør de tre bokse og knap usynlige til at starte med
         employye_add.setVisible(false);
         start_time_add.setVisible(false);
@@ -142,12 +157,20 @@ public class ActivityScene implements Initializable {
     }
 
 
-    public Activity createActivty() {
+    public Activity createActivty() throws IllegalInputException {
         //get values from boksene
         String nameActivity = name_activity_add.getText();
         String startTime = start_time_add.getText();
         String endTime = end_time_add.getText();
         String employeeId = employye_add.getText();
+
+        try {
+            pma.isEmployeeAvailable(employeeId);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
 
 
         //create activity
@@ -159,10 +182,19 @@ public class ActivityScene implements Initializable {
                 break;
             }
         }
-       return activity;
+        return activity;
     }
 
-    public void Done_action(ActionEvent event) {
+    public void Done_action(ActionEvent event) throws IllegalInputException {
+        Employee employee = pma.getEmployee(MainScene.name);
+        try {
+            pma.getProject(ActivityScene.projectname).isProjectManager(employee);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
+
 
         pma.getProject(ActivityScene.projectname).addActivity(createActivty());
         ActivityScene.project = ActivityScene.pma.getProject(projectname);
@@ -187,6 +219,41 @@ public class ActivityScene implements Initializable {
         list_activity.setItems(myProjects);
         list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+    }
+
+    public void delete_activity_action(ActionEvent event) throws IllegalInputException {
+        Employee employee = pma.getEmployee(MainScene.name);
+        try {
+            pma.getProject(ActivityScene.projectname).isProjectManager(employee);
+        } catch (Exception e) {
+            errorAlert.setContentText(e.getMessage());
+            errorAlert.showAndWait();
+            throw new IllegalInputException(e.getMessage());
+        }
+
+
+        String activityName = list_activity.getSelectionModel().getSelectedItems().get(0);
+        Activity removedActivity = ActivityScene.pma.getProject(ActivityScene.projectname).getActivity(activityName);
+        ActivityScene.pma.getProject(ActivityScene.projectname).removeActivity(removedActivity);
+
+
+        myActivityNames = new String[ActivityScene.project.activities.size()];
+        int i = 0;
+        for(Activity activity: ActivityScene.project.activities) {
+            myActivityNames[i] = activity.getName();
+            i++;
+        }
+
+        ObservableList<String> myProjects = FXCollections.observableArrayList(myActivityNames);
+        list_activity.setItems(myProjects);
+        list_activity.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+
+    public void Delete_activity_action(ActionEvent event) {
+        String itemToRemove = list_activity.getSelectionModel().getSelectedItem();
+        
+        list_activity.getItems().remove(itemToRemove);
 
     }
 }

@@ -1,10 +1,13 @@
 package system.app;
-
 import io.cucumber.java.en_old.Ac;
 
 import java.util.ArrayList;
 
 public class Project {
+    private static final int CURRENT_YEAR = 2022;
+    private static final int CURRENT_YEAR_ID = CURRENT_YEAR - 2000;
+    private static int projectCounter = 0;
+    String projectID;
     int id;
     public String name;
     Employee projectManager;
@@ -15,6 +18,8 @@ public class Project {
     public Project(String name) {
         this.name = name;
         this.activities = new ArrayList<>();
+        projectCounter++;
+        this.projectID = projectCounter + "" + CURRENT_YEAR_ID;
     }
 
     public Employee getProjectManager() {
@@ -44,6 +49,9 @@ public class Project {
 
     public void addActivity(Activity activity) {
         activities.add(activity);
+        if(!activity.employee.projects.contains(this)) {
+            activity.employee.projects.add(this);
+        }
     }
 
     public boolean nameExistActivity(String name) {
@@ -76,10 +84,6 @@ public class Project {
         }
     }
 
-    public void deleteActivity(Activity activity) throws OperationNotAllowed {
-       if(!projectContainsActivity())
-            this.activities.remove(activity);
-    }
 
 
 }
