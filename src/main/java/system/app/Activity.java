@@ -28,6 +28,7 @@ public class Activity {
     public boolean isActivityStaffed() {
         return this.employee != null;
     }
+
     /*
     public void reportTimeWorked(int timeHolder){
         this.timeHolder += timeHolder;

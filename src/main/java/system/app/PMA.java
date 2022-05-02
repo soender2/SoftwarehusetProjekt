@@ -16,6 +16,15 @@ public class PMA {
         employees = new ArrayList<Employee>();
     }
 
+    public boolean employeeExist(String employeeId) {
+        for(Employee employee: employees) {
+            if(employee.employeeId.equals(employeeId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
