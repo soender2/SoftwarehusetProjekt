@@ -1,0 +1,11 @@
+Test case 1: isProjectManager
+null No
+name Yes
+name Yes
+name Yes
+null No
+name Yes
+null No
+null No
+name Yes
+null No

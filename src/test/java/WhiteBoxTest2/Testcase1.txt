@@ -1,0 +1,21 @@
+Test case 1: Is Project Manager
+add a Yes
+add ab Yes
+add abc Yes
+abcd No
+abcde No
+add abcdef Yes
+abcdefg No
+add abcdefgh Yes
+abcdefghi No
+abcdefghij No
+add jsdid Yes
+kokdsa No
+klasjd No
+sdjjasdi No
+add lokjd Yes
+daosos No
+as No
+add zla Yes
+llod No
+add loli Yes

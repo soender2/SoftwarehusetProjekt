@@ -1,0 +1,14 @@
+Test case 1: available Employees
+Employee 1 Yes
+Employee 2 Yes
+Employee 3 Yes
+Employee 4 Yes
+Employee 5 Yes
+Employee 6 Yes
+Employee 7 Yes
+Employee 8 Yes
+Employee 9 Yes
+Employee 10 No
+Employee 11 No
+Employee 12 No
+Employee 13 No
