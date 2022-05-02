@@ -29,9 +29,12 @@ public class Activity {
         return this.employee != null;
     }
 
+    /*
     public void reportTimeWorked(int timeHolder){
         this.timeHolder += timeHolder;
     }
+    */
+
 
     public void editTimeSchedule(int startTime, int endTime){
         this.startTime = startTime;
@@ -41,6 +44,7 @@ public class Activity {
     public void setName(String name){
         this.name = name;
     }
+
     public void setEmployee(Employee employee){
         this.employee = employee;
     }

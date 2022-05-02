@@ -258,11 +258,22 @@ public class ActivityScene implements Initializable {
 
     }
 
+    public String[] getAvailableEmployees(PMA pma) {
+        String[] availableEmployees = new String[pma.availableEmployees().size()];
+        int i = 0;
+        for(Employee employee : pma.employees) {
+            if(employee.EmployeeAvailable()) {
+                availableEmployees[i] = employee.employeeId;
+            }
+            i++;
+        }
+        return availableEmployees;
+    }
+
     public void showAvailableEmployees(ActionEvent actionEvent) throws OperationNotAllowed {
         try {
             pma.getProject(projectname).isProjectManager(pma.getEmployee(MainScene.name));
-            String[] availableEmployees = pma.getAvailableEmployees();
-            ObservableList<String> employees = FXCollections.observableArrayList(availableEmployees);
+            ObservableList<String> employees = FXCollections.observableArrayList(getAvailableEmployees(pma));
             listAvailableEmployees.setItems(employees);
             listAvailableEmployees.setVisible(true);
         } catch (Exception e) {
