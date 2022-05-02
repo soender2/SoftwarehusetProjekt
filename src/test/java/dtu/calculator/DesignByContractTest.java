@@ -33,7 +33,11 @@ public class DesignByContractTest {
     public void isEmployeeAvailableTest() throws OperationNotAllowed {
         pma.employees.add(employee);
         pma.isEmployeeAvailable(employee.getEmployeeId());
-
+    }
+    @Test
+    public void EmployeeAvailableTest(){
+        activity.assignEmployeeActivities(employee);
+        employee.EmployeeAvailable();
     }
 
 
