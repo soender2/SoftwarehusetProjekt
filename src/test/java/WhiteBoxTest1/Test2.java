@@ -1,22 +1,24 @@
-package WhiteBoxTest.Test1;
+package WhiteBoxTest1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Test3 {
+public class Test2 {
 	ArrayList<String> arrNames, arrAnswers;
-	File myFile = new File("src/test/java/WhiteBoxTest/Test1/Testcase3.txt");
-	Scanner myReader = new Scanner(myFile);
-	int amountOfTests = 6;
+	File myFile;
+	Scanner myReader;
+	int amountOfTests = 98;
 	int correctAnswers = 0;
 	
-	Test3() throws FileNotFoundException{
+	Test2() throws FileNotFoundException{
 		
 		//Initializing variables
 		arrNames = new ArrayList<String>();
 		arrAnswers = new ArrayList<String>();
+		myFile = new File("src/test/java/WhiteBoxTest1/Testcase2.txt");
+		myReader = new Scanner(myFile);
 		
 		//Preparing scanner for file input
 		myReader.nextLine();
@@ -32,7 +34,7 @@ public class Test3 {
 			if (login(arrNames.get(i)).equals(arrAnswers.get(i))) {
 				correctAnswers++;
 			} else System.out.println("Test case " + (i+1) + " failed");
-		} System.out.println("Test case 3: Amount of correct cases: " + correctAnswers + "/" + amountOfTests);
+		} System.out.println("Test case 2: Amount of correct cases: " + correctAnswers + "/" + amountOfTests);
 	}
 	
 	public String login(String initials) {

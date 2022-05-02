@@ -1,4 +1,4 @@
-package WhiteBoxTest.Test4;
+package WhiteBoxTest4;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Test1{
 	ArrayList<Employee> employees;
 	ArrayList<String> arrAnswers;
-	File myFile = new File("src/test/java/WhiteBoxTest/Test4/Testcase1.txt");
+	File myFile = new File("src/test/java/WhiteBoxTest4/Testcase1.txt");
 	Scanner myReader = new Scanner(myFile);
 	int amountOfTests = 12;
 	int correctAnswers = 0;

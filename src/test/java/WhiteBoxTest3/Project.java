@@ -1,4 +1,4 @@
-package WhiteBoxTest.Test3;
+package WhiteBoxTest3;
 
 public class Project {
 	Employee projectManager;

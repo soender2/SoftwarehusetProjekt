@@ -1,4 +1,4 @@
-package WhiteBoxTest.Test4;
+package WhiteBoxTest4;
 
 import java.util.ArrayList;
 

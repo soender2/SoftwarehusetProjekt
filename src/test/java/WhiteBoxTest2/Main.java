@@ -1,7 +1,7 @@
-package WhiteBoxTest.Test3;
+package WhiteBoxTest2;
 
 import java.io.FileNotFoundException;
-public class MainTest3 {
+public class Main {
 	public static void main(String[] args) throws FileNotFoundException{
 		new Test1();
 	}

@@ -1,4 +1,4 @@
-package WhiteBoxTest.Test2;
+package WhiteBoxTest2;
 
 public class Project {
 	String name;
