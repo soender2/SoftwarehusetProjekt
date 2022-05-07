@@ -10,6 +10,7 @@ public class PMA {
     public ArrayList<Employee> employees;
     public ArrayList<Project> projects;
     Employee employee;
+    PMA pma;
 
     public PMA() {
         projects = new ArrayList<Project>();
@@ -43,10 +44,9 @@ public class PMA {
 
 
     public Project getProject(String name) {
-        assert true: "precondition getProject";
+
         for (Project project : projects) {
             if (project.name.equals(name)) {
-                assert name.equals(project.name): "postcondition getProject";
                 return project;
             }
         }
@@ -59,7 +59,8 @@ public class PMA {
             if (project.name.equals(projectname)) {
                 assert project.name.equals(projectname): "postcondition existProjectName";
                 return true;
-            }}
+            }
+        }
         return false;
     }
 
@@ -67,9 +68,12 @@ public class PMA {
 
     public ArrayList<Employee> availableEmployees() {
         ArrayList<Employee> availableEmployees = new ArrayList<>();
+
+        assert availableEmployees.isEmpty(): "precondition availableEmployee";
         for(Employee employee : employees) {
             if(employee.EmployeeAvailable()){
                 availableEmployees.add(employee);
+                assert availableEmployees.contains(employee):"postcondition availableEmployees";
             }}
         return availableEmployees;
     }
@@ -84,12 +88,11 @@ public class PMA {
     }
 
     public boolean isEmployeeAvailable(String name) throws OperationNotAllowed {
-        assert true: "precondition for isEmployeeAvailable";
         for(Employee employee: employees) {
             if(employee.employeeId.equals(name)) {
-                assert employee.employeeId.equals(name): "postcondition for isEmployeeAvailable";
                 return employee.EmployeeAvailable();
             }}
         throw new OperationNotAllowed("Employee is not available");
     }
+
 }

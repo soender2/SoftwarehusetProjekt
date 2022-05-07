@@ -47,7 +47,7 @@ public class DeleteActivity {
     @Given("the project contains zero activities")
     public void the_project_contains_zero_activities() {
         try {
-            assertFalse(testData.project.projectContainsActivity());
+            assertFalse(testData.project.projectContainsActivities());
         } catch (OperationNotAllowed e) {
             this.errorMessageHolder.setErrorMessage(e.getMessage());
         }

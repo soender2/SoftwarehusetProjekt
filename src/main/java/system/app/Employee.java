@@ -41,9 +41,7 @@ public class Employee {
     }
 
     public boolean EmployeeAvailable() {
-        assert true: "precondition for EmployeeAvailable";
         if(this.activities == null || this.activities.size() < 10) {
-            assert this.activities.size() < 10 || this.activities.isEmpty(): "postcondition for EmployeeAvailable";
             return true;
         } else {
             return false;

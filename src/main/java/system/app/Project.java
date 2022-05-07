@@ -75,10 +75,12 @@ public class Project {
         return null;
     }
 
-    public boolean projectContainsActivity() throws OperationNotAllowed {
+    public boolean projectContainsActivities() throws OperationNotAllowed {
+        assert true: "precondition for  projectContainsActivity";
         if(this.activities.isEmpty()) {
             throw new OperationNotAllowed("No activities available for deleting");
         } else {
+            assert !(this.activities.isEmpty()): "postcondition for projectContainsActivities";
             return false;
         }
     }

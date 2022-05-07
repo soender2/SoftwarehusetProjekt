@@ -16,13 +16,10 @@ public class Activity {
     }
 
     public void assignEmployeeActivities(Employee employee) {
-        assert true: "precondition for assignEmployeeActivities";
         this.employee = employee;
         if(!employee.activities.contains(this)) {
             employee.activities.add(this);
         }
-        assert employee.activities.contains(this):"postcondition for assignEmployeeActivities";
-
     }
 
     public boolean isActivityStaffed() {
